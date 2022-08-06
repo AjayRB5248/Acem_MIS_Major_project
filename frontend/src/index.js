@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Profile from "./components/profile";
 import Courses from './components/courses'
+import Feedback from './components/feedback'
 import "./index.css";
 import App from "./App";
 import {
@@ -19,6 +20,7 @@ ReactDOM.render(
       <Route exact path="/Logout" component={Login} />
       <Route exact path="/Profile" component={Profile} />
       <Route exact path="/Courses" component={Courses} />
+      <Route exact path="/Feedback" component={Feedback} />
       <Route exact path="/" component={Login} />
       <Redirect from="*" to="/timeline" />
     </Switch>

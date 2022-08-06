@@ -1,0 +1,10 @@
+.feedback{
+  background-color: white;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  padding: 20px 25px;
+}
+.feedback_form input{
+  display: flex;
+  margin-top: 10px;
+}

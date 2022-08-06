@@ -55,7 +55,7 @@ const { response } = require("express");
 
 router.post("/Login", async (req, res) => {
   if (req.body.password && req.body.email) {
-    const userLogin = await model.findOne(req.body);
+    const userLogin = await model.findOne(req.body).select("-password");
     if (userLogin) {
      
       const token = await userLogin.generateAuthToken();
@@ -73,21 +73,21 @@ router.post("/Login", async (req, res) => {
   }
 });
 
-router.get('/Login/:id' , (req,res,next)=>{
-  res.send(req.rootuser)
-  console.log(req.params.id);
-  model.findById(req.params.id)
-  .then(result=>{
-    res.status(200).json({
-      StudentInformation:result
-    })
-  })
-  .catch(err=>{
-    console.log(err)
-    res.status(500).json({
-      error:err
-    })
-  })
-})
+// router.get('/Login/:id' , (req,res,next)=>{
+//   res.send(req.rootuser)
+//   console.log(req.params.id);
+//   model.findById(req.params.id)
+//   .then(result=>{
+//     res.status(200).json({
+//       StudentInformation:result
+//     })
+//   })
+//   .catch(err=>{
+//     console.log(err)
+//     res.status(500).json({
+//       error:err
+//     })
+//   })
+// })
 
 module.exports = router;

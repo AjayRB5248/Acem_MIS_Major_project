@@ -1,39 +1,40 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./style.css";
 import image from "../../assets/ajay.jpg";
+// import axios from 'axios'
 import { useHistory } from "react-router";
 
 const Index = () => {
+  const auth= localStorage.getItem('model');
   const history = useHistory();
-  const [StudentData,setStudentData]=useState();
+  // const [StudentData, setStudentData] = useState("");
 
   const logout = () => {
     localStorage.clear();
     history.push("/");
   };
-   useEffect(()=>{
-    StudentInformation();
-   },[])
 
-  const StudentInformation= async ()=>{
-    try{
-      const res= await fetch('/Login/:id',{
-        method:'GET',
-        headers:{
-          Accept:'application/json',
-          "Content-Type":'application/json'
-        },
-        credentials:"include"
-
-      });
-      const data= await res.json();
-      console.log(data);
-      setStudentData(data);
-    }
-    catch(err){
-      console.log(err)
-    }
-  }
+  // useEffect(() => {
+  //   const StudentInformation = async () => {
+  //     try {
+  //       const res = await fetch("/Login/:id", {
+  //         method: "GET",
+  //         headers: {
+  //           Accept: "application/json",
+  //           "Content-Type": "application/json",
+  //         },
+  //         credentials: "include",
+  //       });
+  //       // const resp = await res.json();
+  //       console.log(res);
+  //       // setStudentData(resp.data);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
+  // });
+ 
+  
   return (
     <div className="wallpaper">
       <div className="image"></div>
@@ -41,11 +42,11 @@ const Index = () => {
         <img src={image} alt="pic" />
         <ul className="list d-flex">
           <li>
-            <h6>Ajay Ranabhat</h6>
-            <span>Gaushala,Kathmandu</span>
+            <h6>{JSON.parse(auth).name}</h6>
+            <span>{JSON.parse(auth).location},Kathmandu</span>
           </li>
           <li>
-            <h6>BCT</h6>
+            <h6>{JSON.parse(auth).faculty}-{JSON.parse(auth).section}</h6>
             <span>Department</span>
           </li>
           <li>

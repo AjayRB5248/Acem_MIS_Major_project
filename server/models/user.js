@@ -17,6 +17,9 @@ const User = new mongoose.Schema({
   faculty: {
     type: String,
   },
+  location: {
+    type: String,
+  },
   section: {
     type: String,
   },
