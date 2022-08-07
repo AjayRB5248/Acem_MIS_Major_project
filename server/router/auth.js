@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const app = express();
 const cors = require("cors");
+const multer = require("multer");
+const fs = require('fs');
 const jwt = require("jsonwebtoken");
 
 const bodyParser = require("body-parser");
@@ -14,6 +16,37 @@ app.use(express.json());
 require("../db/conn");
 const model = require("../models/user");
 const { response } = require("express");
+
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, "uploads");
+//   },
+//   filename: (req, file, cb) => {
+//     cb(null, file.originalname);
+//   },
+// });
+
+// const upload = multer({ storage: storage });
+
+// router.post("/Upload", upload.single("testImage"), (req, res) => {
+//   const saveImage =  model({
+//     name: req.body.name,
+
+//     image: {
+//       data: fs.readFileSync("uploads/" + req.file.filename),
+//       contentType: "image/png,image/jpeg,image/jpg",
+//     },
+//   });
+//   saveImage
+//     .save()
+//     .then((res) => {
+//       console.log("image is saved");
+//     })
+//     .catch((err) => {
+//       console.log(err, "error has occur");
+//     });
+//     res.send('image is saved')
+// });
 
 // router.post('/Login', async (req,res)=>{
 //    try{

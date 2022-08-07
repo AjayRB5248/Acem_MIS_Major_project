@@ -14,6 +14,10 @@ const User = new mongoose.Schema({
     type: String,
     unique:false
   },
+  image: {
+    data: Buffer,
+    contentType: String,
+  },
   faculty: {
     type: String,
   },
