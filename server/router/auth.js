@@ -17,74 +17,23 @@ require("../db/conn");
 const model = require("../models/user");
 const { response } = require("express");
 
-// const storage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, "uploads");
-//   },
-//   filename: (req, file, cb) => {
-//     cb(null, file.originalname);
-//   },
-// });
+router.post("/register", async (req, res) =>{
+  const {name,email,password,location,batch,section,faculty}=req.body;
+  if(!name || !email || !password || !location || !batch || !section || !faculty){
+    return res.status(422).json({error:"Plz fill the field property"});
+  }
 
-// const upload = multer({ storage: storage });
-
-// router.post("/Upload", upload.single("testImage"), (req, res) => {
-//   const saveImage =  model({
-//     name: req.body.name,
-
-//     image: {
-//       data: fs.readFileSync("uploads/" + req.file.filename),
-//       contentType: "image/png,image/jpeg,image/jpg",
-//     },
-//   });
-//   saveImage
-//     .save()
-//     .then((res) => {
-//       console.log("image is saved");
-//     })
-//     .catch((err) => {
-//       console.log(err, "error has occur");
-//     });
-//     res.send('image is saved')
-// });
-
-// router.post('/Login', async (req,res)=>{
-//    try{
-//     const { email , password} = req.body;
-//     if(!email || !password){
-//         return res.status(400).json({
-//             error:"Plz fill the form"
-//         })
-
-//     }
-//     if(req.body.password && req.body.email){
-
-//         const userLogin= await model.findOne({ email});
-//         console.log(userLogin);
-
-//         if(userLogin){
-
-//             const token= await userLogin.generateAuthToken();
-//             console.log(token);
-//             // if(!pass) {
-//                 //     res.status(400).json({error:"Invalid Inputs"})
-//                 // }   else{
-//                     //     res.json({message:"user Sign In Successfully"})
-//                     // }
-
-//                     res.cookie("jwttoken", token,{
-//                         expires: new Date(Date.now()+ 25892000000),
-//                         httpOnly:true
-//                     })
-//                 }else{
-//                     window.alert("Invalid Credentials")
-//                 }
-
-//             }
-//             }catch(err){
-//                 console.log(err);
-//    }
-// });
+  model.findOne({ email:email})
+  .then((userexist)=>{
+    if(userexist){
+      return res.status(422).json({error:"Email Already Exist!!"});
+    }
+    const user = new model ({name, email, password, location, batch, section, faculty});
+    user.save().then(()=>{
+      res.status(200).json({message:"User Registered successfully"});
+    }).catch((err)=>res.status(500).json({error:'Faled to register'}));
+  }).catch(err=>{console.log(err);});
+});
 
 router.post("/Login", async (req, res) => {
   if (req.body.password && req.body.email) {
@@ -106,21 +55,6 @@ router.post("/Login", async (req, res) => {
   }
 });
 
-// router.get('/Login/:id' , (req,res,next)=>{
-//   res.send(req.rootuser)
-//   console.log(req.params.id);
-//   model.findById(req.params.id)
-//   .then(result=>{
-//     res.status(200).json({
-//       StudentInformation:result
-//     })
-//   })
-//   .catch(err=>{
-//     console.log(err)
-//     res.status(500).json({
-//       error:err
-//     })
-//   })
-// })
+
 
 module.exports = router;

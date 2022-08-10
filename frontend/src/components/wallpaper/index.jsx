@@ -1,11 +1,11 @@
 import React from "react";
 import "./style.css";
-import image from "../../assets/ajay.jpg";
+import image from "../../assets/user.png";
 // import axios from 'axios'
 import { useHistory } from "react-router";
 
 const Index = () => {
-  const auth= localStorage.getItem('model');
+  const auth = localStorage.getItem("model");
   const history = useHistory();
   // const [StudentData, setStudentData] = useState("");
 
@@ -33,20 +33,27 @@ const Index = () => {
   //     }
   //   };
   // });
- 
-  
+
   return (
     <div className="wallpaper">
       <div className="image"></div>
       <div className="text d-flex">
-        <img src={image} alt="pic" />
+        <div class="image-upload">
+          <label for="file-input">
+            <img src={image} />
+          </label>
+
+          <input id="file-input" type="file" />
+        </div>
         <ul className="list d-flex">
           <li>
-            <h6>{JSON.parse(auth).name}</h6>
+            <h6 className="listname">{JSON.parse(auth).name}</h6>
             <span>{JSON.parse(auth).location},Kathmandu</span>
           </li>
           <li>
-            <h6>{JSON.parse(auth).faculty}-{JSON.parse(auth).section}</h6>
+            <h6>
+              {JSON.parse(auth).faculty}-{JSON.parse(auth).section}
+            </h6>
             <span>Department</span>
           </li>
           <li>

@@ -47,10 +47,13 @@
   font-weight: 900;
   font-family: "Oxygen";
 }
+.image-upload > input {
+  display: none;
+}
 .wallpaper .text .list li:last-child {
   border-right: 0px solid rgb(255, 255, 255);
 }
-.logout_btn{
+.logout_btn {
   border: none;
   padding: 5px 10px;
   color: white;
