@@ -1,0 +1,16 @@
+.course {
+    background-color: white;
+
+  }
+  .course h5{
+    text-decoration: underline;
+    height: auto;
+    font-size: 30px;
+    text-align: center;
+    justify-content: center;
+    margin-left: 5px;
+    padding: 20px 20px;
+  }
+  .course ol li{
+    margin-top: 15px;
+  }
