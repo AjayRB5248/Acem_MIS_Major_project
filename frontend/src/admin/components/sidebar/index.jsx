@@ -1,8 +1,15 @@
 import { Link } from "react-router-dom";
 import React from 'react'
-import logo from "./../../assets/clg.jpg";
+import { useNavigate } from "react-router-dom";
+import logo from "../../../assets/clg.jpg"
 import "./sidebar.css";
-const index = () => {
+const Index = () => {
+  const navigate = useNavigate();
+  const logout = () => {
+    localStorage.removeItem("admin");
+    localStorage.removeItem("adminToken");
+    navigate("/admin/login");
+  };
   const students = [
     {
       id: 0,
@@ -73,10 +80,10 @@ const index = () => {
           );
         })}
       </ul>
-      <button className="admin-btn">Logout</button>
+      <button className="admin-btn" onClick={logout}>Logout</button>
     </div>
   );
 };
 }
 
-export default index;
+export default Index;

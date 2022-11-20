@@ -9,9 +9,10 @@ cloudinary.config({
 const Event = require("../models/eventModel");
 
 const getEvents = async (req, res) => {
+  const count = await Event.find({}).countDocuments();
   await Event.find()
     .then((events) => {
-      res.status(200).json(events);
+      res.status(200).json({events,count});
     })
     .catch((err) => {
       res.status(400).json(err);

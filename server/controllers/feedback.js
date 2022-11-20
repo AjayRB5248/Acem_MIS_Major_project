@@ -3,6 +3,7 @@ const Student = require("../models/studentModel");
 const mongoose = require("mongoose");
 
 const getFeedbacks = async (req, res) => {
+  const count = await Feedback.find({}).countDocuments();
   let feedbacks;
   try {
     feedbacks = await Feedback.find().populate({
@@ -15,7 +16,7 @@ const getFeedbacks = async (req, res) => {
   if (!feedbacks) {
     return res.status(404).json({ message: "No Feedbacks Found" });
   }
-  return res.status(200).json({ feedbacks });
+  return res.status(200).json({ feedbacks ,count});
 };
 
 const getFeedbackById = async (req, res) => {

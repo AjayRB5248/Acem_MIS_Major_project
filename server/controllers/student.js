@@ -18,10 +18,39 @@ const getStudent = async (req, res) => {
     });
 };
 
+const getStudentById = async (req, res) => {
+  let student;
+  try {
+    student = await Student.findById(req.params.id);
+  } catch (err) {
+    return console.log(err);
+  }
+  if (!student) {
+    return res.status(404).json({ message: "No Student Found" });
+  }
+  return res.status(200).json({ student });
+};
+
+
+const getStudentByBatchAndSection = async (req, res) => {
+  const {batch,section} = req.params;
+  await Student.find({ batch: batch,section:section
+  })
+
+    .then((student) => {
+      res.status(200).json(student);
+    })
+    .catch((err) => {
+      res.status(400).json(err);
+    });
+};
+
+
 const getStudents = async (req, res) => {
+  const count = await Student.find({}).countDocuments();
   await Student.find()
     .then((students) => {
-      res.status(200).json(students);
+      res.status(200).json({students,count});
     })
     .catch((err) => {
       res.status(400).json(err);
@@ -159,4 +188,6 @@ module.exports = {
   getStudent,
   createStudent,
   deleteStudent,
+  getStudentByBatchAndSection,
+  getStudentById
 };

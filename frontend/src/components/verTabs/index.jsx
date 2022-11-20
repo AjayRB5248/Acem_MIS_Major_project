@@ -4,7 +4,7 @@ import "./style.css";
 import Stepper from "../stepper";
 // import React from 'react'
 
-const index = (props) => {
+const Index = (props) => {
   const auth = localStorage.getItem("model");
 
   switch (props.value) {
@@ -103,4 +103,4 @@ const index = (props) => {
       return <Box className="vertab">Error</Box>;
   }
 };
-export default index;
+export default Index;

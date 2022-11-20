@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Sidebar from "../sidebar";
+import Sidebar from "../../components/sidebar";
 import "./index.css";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
@@ -7,42 +7,39 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Index = () => {
   const [state, setState] = useState({
-    eventName :"",
-    date:"",
-    venue:"",
-    description:"",
-    photo:"",
+    eventName: "",
+    date: "",
+    venue: "",
+    description: "",
+    photo: "",
   });
-  const handleSubmit = async (e)=>{
-    e.preventDefault()
-    let url= "http://localhost:8000/api/event"
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let url = "http://localhost:8000/api/event";
     const formData = new FormData();
-      formData.append("eventName", state.eventName);
-      formData.append("date", state.date);
-      formData.append("venue", state.venue);
-      formData.append("description", state.description);
-      formData.append("photo", state.photo);
-  
+    formData.append("eventName", state.eventName);
+    formData.append("date", state.date);
+    formData.append("venue", state.venue);
+    formData.append("description", state.description);
+    formData.append("photo", state.photo);
+
     try {
-      const response = await axios.post(
-        url,
-        formData,
-      );
-      if(response.status===201){
-      toast.success('Submitted Successfully', {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
+      const response = await axios.post(url, formData);
+      if (response.status === 201) {
+        toast.success("Submitted Successfully", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
         });
       }
     } catch (err) {
       console.log(err);
-      toast.error('Something Went Wrong', {
+      toast.error("Something Went Wrong", {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
@@ -51,16 +48,16 @@ const Index = () => {
         draggable: true,
         progress: undefined,
         theme: "dark",
-        });
+      });
     }
     setState({
-      eventName :"",
-      date:"",
-      venue:"",
-      description:"",
-      photo:"",
-    })
-  }
+      eventName: "",
+      date: "",
+      venue: "",
+      description: "",
+      photo: "",
+    });
+  };
 
   const handleState = (e) => {
     setState({
@@ -76,9 +73,8 @@ const Index = () => {
     });
   };
   return (
-   
     <div className="addEvent">
-     <ToastContainer/>
+      <ToastContainer />
       <div className="sidebar">
         <Sidebar />
       </div>
@@ -129,7 +125,7 @@ const Index = () => {
             <input type="file" name="photo" onChange={handleImage} />
           </div>
           <div className="event_button">
-            <button type='submit'>Submit</button>
+            <button type="submit">Submit</button>
           </div>
         </form>
       </div>

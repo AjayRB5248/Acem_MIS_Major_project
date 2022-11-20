@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-
-
 require("../db/conn");
 const model = require("../models/studentModel");
 
@@ -51,13 +49,9 @@ router.post("/Login", async (req, res) => {
   if (req.body.cid && req.body.email) {
     const userLogin = await model.findOne(req.body);
     if (userLogin) {
-      const token = await userLogin.generateAuthToken();
+      // const token = userLogin.generateAuthToken();
 
-      res.cookie("jwttoken", token, {
-        expires: new Date(Date.now() + 25892000000),
-        httpOnly: true,
-      });
-      return res.send(userLogin);
+      return res.status(201).json(userLogin);
     } else {
       res.send({ result: "NO USER FOUND" });
     }

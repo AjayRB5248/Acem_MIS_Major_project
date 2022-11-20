@@ -10,7 +10,7 @@ export default class Profile extends Component {
     super(props);
     this.state = {
       user: {},
-      tab: 0
+      tab: 0,
     };
   }
   handleChange = (e, newValue) => {
@@ -33,7 +33,7 @@ export default class Profile extends Component {
                     style={{
                       borderRadius: 0,
                       borderBottom: "1px solid gray",
-                      marginLeft: "5px"
+                      marginLeft: "5px",
                     }}
                   >
                     <Tabs

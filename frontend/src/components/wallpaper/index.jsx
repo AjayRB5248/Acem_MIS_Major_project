@@ -1,44 +1,25 @@
 import React from "react";
 import "./style.css";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 const Index = () => {
   const auth = localStorage.getItem("model");
-  const history = useHistory();
+  const navigate = useNavigate();
   // const [StudentData, setStudentData] = useState({});
 
   const logout = () => {
-    localStorage.clear();
-    history.push("/");
+    localStorage.removeItem("model");
+    localStorage.removeItem("studentToken");
+    navigate("/");
   };
-
-  // useEffect(() => {
-  //   const StudentInformation = async () => {
-  //     try {
-  //       const res = await fetch("/Login/:id", {
-  //         method: "GET",
-  //         headers: {
-  //           Accept: "application/json",
-  //           "Content-Type": "application/json",
-  //         },
-  //         credentials: "include",
-  //       });
-  //       // const resp = await res.json();
-  //       console.log(res);
-  //       // setStudentData(resp.data);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-  // });
 
   return (
     <div className="wallpaper">
       <div className="image"></div>
       <div className="text d-flex">
         <div className="image-upload">
-        <label >
-            <img src={JSON.parse(auth).profile} alt='ProfileImage'/>
+          <label>
+            <img src={JSON.parse(auth).profile} alt="ProfileImage" />
           </label>
         </div>
         <ul className="list d-flex">

@@ -11,6 +11,7 @@ const studentSchema =new Schema({
   cid: {
     type: String,
     required: true,
+    unique:true,
   },
   email: {
     type: String,
@@ -94,6 +95,14 @@ studentSchema.methods.generateAuthToken = async function () {
     console.log(err);
   }
 };
+
+studentSchema.methods.generateAuthToken = ()=> {
+	const token = jwt.sign({ _id: this._id }, process.env.JWTPRIVATEKEY, {
+		expiresIn: "7d",
+	});
+	return token;
+};
+
 
 const Student = new mongoose.model("Student", studentSchema);
 module.exports = Student;

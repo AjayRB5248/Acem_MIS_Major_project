@@ -6,8 +6,10 @@ const bodyParser = require("body-parser");
 const Student = require("./router/studentRoute");
 const Feedback = require("./router/feedbackRoute");
 const Event = require("./router/eventRoute");
+const Admin = require("./router/adminRoute");
 const BatchSection = require("./router/batchSectionRoute");
 const fileUpload = require("express-fileupload");
+const Routine = require("./router/routineRoute");
 
 app.use(express.json());
 app.use(express.urlencoded());
@@ -33,6 +35,8 @@ app.use("/api", Student);
 app.use("/api", Feedback);
 app.use("/api", BatchSection);
 app.use("/api", Event);
+app.use("/api", Admin);
+app.use("/api", Routine);
 
 app.listen(port, () => {
   console.log(`Server Started at port ${port}`);

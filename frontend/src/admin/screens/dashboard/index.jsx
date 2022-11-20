@@ -1,12 +1,12 @@
 import React from "react";
 import "./dashboard.css";
-import Sidebar from "../sidebar/index.jsx";
-import Totalstudents from "../components/Totalstudents/totalStudents";
-import TotalFeedback from "../components/TotalFeedback";
-import Chart from "../components/Chart";
-import Event from '../components/Events'
+import Sidebar from '../../components/sidebar'
+import Totalstudents from "../../components/Totalstudents";
+import TotalFeedback from "../../components/TotalFeedback";
+import Chart from '../../components/Chart'
+import Event from '../../components/Events'
 
-const dashboard = () => {
+const Index = () => {
   return (
     <div className="dashboard">
       <div className="sidebar">
@@ -21,6 +21,7 @@ const dashboard = () => {
 
         <div className="big_components">
           <Chart />
+          <Chart />
 
         </div>
       </div>
@@ -28,4 +29,4 @@ const dashboard = () => {
   );
 };
 
-export default dashboard;
+export default Index;

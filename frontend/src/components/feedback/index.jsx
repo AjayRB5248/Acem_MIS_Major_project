@@ -15,34 +15,27 @@ const Index = () => {
   const [state, setState] = useState([]);
 
   const handleState = (e) => {
-    
     setState({
       ...state,
       [e.target.name]: e.target.value,
     });
     console.log(state);
   };
- 
-  const handleSubmit =async (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-   
-    let url ="http://localhost:8000/api/feedback"
-    
-         
-      
-      try {
-        const response = await axios.post(
-          url,
-         {
-            TeacherName: state.TeacherName,
-            faculty: state.faculty,
-            feedbackMessage: state.feedbackMessage,
-            student:JSON.parse(auth)._id,
-          }
-         
-        );
-      if(response.status===200){
-        toast.success('Submitted Successfully', {
+
+    let url = "http://localhost:8000/api/feedback";
+
+    try {
+      const response = await axios.post(url, {
+        TeacherName: state.TeacherName,
+        faculty: state.faculty,
+        feedbackMessage: state.feedbackMessage,
+        student: JSON.parse(auth)._id,
+      });
+      if (response.status === 200) {
+        toast.success("Submitted Successfully", {
           position: "top-center",
           autoClose: 3000,
           hideProgressBar: false,
@@ -51,28 +44,26 @@ const Index = () => {
           draggable: true,
           progress: undefined,
           theme: "dark",
-          });
-          setState("");
-        }
-      } catch (err) {
-        console.log(err);
-        toast.error('Something Went Wrong', {
-          position: "top-center",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-          });
+        });
+        setState([]);
       }
-      
-      
+    } catch (err) {
+      console.log(err);
+      toast.error("Something Went Wrong", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    }
   };
   return (
     <div className="App">
-    <ToastContainer/>
+      <ToastContainer />
       <Grid container direction="row" spacing={1}>
         <Grid item xs={2}>
           <Sidebar />
@@ -107,7 +98,7 @@ const Index = () => {
                       name="feedbackMessage"
                       value={state.feedbackMessage}
                       onChange={handleState}
-                      placeholder="Your Message...."
+                      placeholder="Type your Message...."
                     />
 
                     <button className="form_btn" type="submit">

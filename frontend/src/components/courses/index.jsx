@@ -4,7 +4,7 @@ import "react-calendar/dist/Calendar.css";
 import Wallpaper from "./../../components/wallpaper";
 import { Grid } from "@material-ui/core";
 import Sidebar from "./../../components/sidebar";
-import './course.css'
+import "./course.css";
 
 const Index = () => {
   return (
@@ -17,21 +17,21 @@ const Index = () => {
           <Wallpaper />
           <Grid container direction="row">
             <Grid item xs={7}>
-            <div className="course">
-            <h5>8th Semester</h5>
-         <hr />
-         <div className="col-7">
-          <ol>
-            <li>Engineering Professional Pracice</li>
-            <li>Information System</li>
-            <li>Internet and Intranet</li>
-            <li>Project (Part B)</li>
-            <li>Simulation and Modeling</li>
-            <li>Elective II</li>
-            <li>Elective III</li>
-          </ol>
-        </div>
-            </div>
+              <div className="course">
+                <h5>8th Semester</h5>
+                <hr />
+                <div className="col-7">
+                  <ol>
+                    <li>Engineering Professional Pracice</li>
+                    <li>Information System</li>
+                    <li>Internet and Intranet</li>
+                    <li>Project (Part B)</li>
+                    <li>Simulation and Modeling</li>
+                    <li>Elective II</li>
+                    <li>Elective III</li>
+                  </ol>
+                </div>
+              </div>
             </Grid>
             <Grid item xs={5}>
               <Calendar />

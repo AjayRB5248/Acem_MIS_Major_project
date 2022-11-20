@@ -1,8 +1,10 @@
 const express = require('express');
-const { getStudents, getStudent, createStudent,  deleteStudent } = require('../controllers/student');
+const { getStudents, getStudent, createStudent,  deleteStudent ,getStudentById,getStudentByBatchAndSection} = require('../controllers/student');
 const router = express.Router();
 
 router.get('/students',getStudents);
+router.get('/student/:id',getStudentById);
+router.get('/students/:batch/:section',getStudentByBatchAndSection);
 router.get('/students/:id',getStudent);
 router.post('/student',createStudent);
 // router.put('/student/:id',updateStudent);

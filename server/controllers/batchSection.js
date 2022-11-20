@@ -28,4 +28,14 @@ const createBatch = async (req,res)=>{
       }
     }
 
-    module.exports = {getBatch, createBatch};
+    const delBatch = async (req,res)=>{
+      const batchSection = await Batch.findByIdAndDelete(req.params.id);
+      if(!batchSection){
+        return res.status(404).json({message: "Batch and Section not found"});
+      }
+      res.status(200).json({message: "Batch and Section has been deleted successfully"});
+    }
+
+       
+
+    module.exports = {getBatch, createBatch,delBatch};

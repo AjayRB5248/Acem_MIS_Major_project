@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Sidebar from "../sidebar";
+import Sidebar from "../../components/sidebar";
 import "./index.css";
 import axios from "axios";
 
@@ -11,7 +11,7 @@ const Index = () => {
   useEffect(() => {
     const feedback = async () => {
       const response = await axios.get(`http://localhost:8000/api/feedbacks`);
-      console.log(response.data.feedbacks);
+      // console.log(response.data.feedbacks);
       setFeedbacks(response.data.feedbacks);
     };
     feedback();
@@ -25,7 +25,7 @@ const Index = () => {
         {/* <h1>Feedbacks</h1> */}
         {feedbacks.map((feedback) => {
           return (
-            <div className="feedback_box">
+            <div className="feedback_box" key={feedback.timestamp}>
             <div className="student_info">
             <div className="image">
               <img src={feedback.student.profile} alt={feedback.student.profile} />
