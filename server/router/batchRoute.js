@@ -1,5 +1,5 @@
 const express = require("express");
-const { getBatch, createBatch ,delBatch} = require("../controllers/batchSection");
+const { getBatch, createBatch ,delBatch} = require("../controllers/batch");
 const router = express.Router();
 
 router.get('/batch',getBatch);

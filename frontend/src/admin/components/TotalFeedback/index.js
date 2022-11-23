@@ -8,7 +8,7 @@ const TotalFeedback = () => {
   const [feedbacks, setFeedbacks] = useState([]);
   useEffect(() => {
     const feedback = async () => {
-      const response = await axios.get(`http://localhost:8000/api/feedbacks`);
+      const response = await axios.get(`http://localhost:8000/api/feedbacks/1`);
       console.log(response.data);
       setFeedbacks(response.data.count);
     };

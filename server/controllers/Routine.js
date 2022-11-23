@@ -22,8 +22,8 @@ const getRoutine = async (req, res) => {
 const getRoutineByDay = async (req, res) => {
     const {batch, section, day} = req.params;
     try {
-        const routine = await Routine.find({ batch,section,day });
-        res.send(routine);
+        const timetable = await Routine.find({ batch,section,day });
+        res.status(200).json({ timetable });
     } catch (error) {
         res.status(400).send(error)
     }

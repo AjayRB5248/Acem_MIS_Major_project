@@ -9,10 +9,16 @@ import "react-toastify/dist/ReactToastify.css";
 
 import Sidebar from "./../../components/sidebar";
 import "./feedback.css";
+// import { useNavigate } from "react-router-dom";
 
 const Index = () => {
+  // const navigate = useNavigate();
   const auth = localStorage.getItem("model");
-  const [state, setState] = useState([]);
+  const [state, setState] = useState({
+    TeacherName: "",
+    faculty: "",
+    feedbackMessage: "",
+  });
 
   const handleState = (e) => {
     setState({
@@ -22,9 +28,15 @@ const Index = () => {
     console.log(state);
   };
 
+  // useEffect(()=>{
+
+  //     navigate('/Feedback')
+
+  // },[])
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setState([]);
     let url = "http://localhost:8000/api/feedback";
 
     try {
@@ -35,7 +47,7 @@ const Index = () => {
         student: JSON.parse(auth)._id,
       });
       if (response.status === 200) {
-        toast.success("Submitted Successfully", {
+        toast.success("FeedBack Submitted Successfully", {
           position: "top-center",
           autoClose: 3000,
           hideProgressBar: false,
@@ -45,7 +57,6 @@ const Index = () => {
           progress: undefined,
           theme: "dark",
         });
-        setState([]);
       }
     } catch (err) {
       console.log(err);
@@ -60,6 +71,11 @@ const Index = () => {
         theme: "dark",
       });
     }
+    setState({
+      TeacherName: "",
+      faculty: "",
+      feedbackMessage: "",
+    });
   };
   return (
     <div className="App">

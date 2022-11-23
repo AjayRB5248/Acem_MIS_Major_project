@@ -1,42 +1,59 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../../components/sidebar";
-import "./index.css";
+import styles from "./feedback.module.css";
 import axios from "axios";
+import Pagination from "@mui/material/Pagination";
+import { Grid } from "@material-ui/core";
+import moment from "moment";
 
 const Index = () => {
   // const auth = localStorage.getItem("model");
   // const id = JSON.parse( localStorage.getItem("model"))._id
 
+  const [page, setPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(2);
+
   const [feedbacks, setFeedbacks] = useState([]);
   useEffect(() => {
     const feedback = async () => {
-      const response = await axios.get(`http://localhost:8000/api/feedbacks`);
-      // console.log(response.data.feedbacks);
-      setFeedbacks(response.data.feedbacks);
+      const response = await axios.get(
+        `http://localhost:8000/api/feedbacks/${page}`
+      );
+      const totalPage = Math.ceil(response.data.count / response.data.perPage);
+      setTotalPage(totalPage);
+      setFeedbacks(response?.data?.feedbacks);
     };
     feedback();
-  }, []);
+  }, [page]);
   return (
-    <div className="feedbacks">
-      <div className="sidebar">
+    <Grid container direction="row" spacing={1}>
+      <Grid item xs={2}>
         <Sidebar />
-      </div>
-      <div className="main_container">
+      </Grid>
+      <div className={styles.main_container}>
         {/* <h1>Feedbacks</h1> */}
         {feedbacks.map((feedback) => {
           return (
-            <div className="feedback_box" key={feedback.timestamp}>
-            <div className="student_info">
-            <div className="image">
-              <img src={feedback.student.profile} alt={feedback.student.profile} />
-              </div>
-              <div className="info">
-              <h3 className="name">{feedback.student.name}</h3>
-              <div className="clz_info">
-              <p className="batch">Batch:{feedback.student.batch}</p>
-              <p className="section">section:{feedback.student.section}</p>
-              </div>
-              </div>
+            <div className={styles.feedback_box} key={feedback.timestamp}>
+              <div className={styles.student_info}>
+                <div className={styles.image}>
+                  <img
+                    src={feedback.student.profile}
+                    alt={feedback.student.profile}
+                  />
+                </div>
+                <div className={styles.info}>
+                  <h3 className={styles.name}>{feedback.student.name}</h3>
+                  <h4>Added: {moment(feedback.timestamp).startOf('day').fromNow()}</h4>
+                  <div className={styles.clz_info}>
+                    <p className={styles.batch}>
+                      Batch:{feedback.student.batch}
+                    </p>
+                    <p className={styles.section}>
+                      section:{feedback.student.section}
+                    </p>
+                  </div>
+                </div>
               </div>
               <h1>{feedback.TeacherName}</h1>
               <h5>Faculty:{feedback.faculty}</h5>
@@ -44,8 +61,21 @@ const Index = () => {
             </div>
           );
         })}
+        <div className={styles.pagination}>
+          {/* <Stack spacing={2}> */}
+          {/* <Pagination count={10} shape="rounded" /> */}
+          <Pagination
+            count={totalPage}
+            variant="outlined"
+            shape="rounded"
+            color="primary"
+            size="large"
+            onChange={(e, value) => setPage(value)}
+          />
+          {/* </Stack> */}
+        </div>
       </div>
-    </div>
+    </Grid>
   );
 };
 

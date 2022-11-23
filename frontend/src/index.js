@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import Profile from "./components/profile";
 import Courses from './components/courses'
 import Feedback from './components/feedback'
@@ -23,8 +23,18 @@ import AdminPrivate from './../src/admin/components/adminPrivate'
 import StudentPrivate from './../src/components/StudentPrivate'
 import Students from './admin/screens/Students'
 import StudentInfo from './admin/screens/StudentInfo'
+import StudentFaculty from './admin/screens/StudentFaculty'
+import StudentSection from './admin/screens/StudentSection'
+import AddRoutine from './admin/screens/AddRoutine'
+import Performance from './admin/screens/Performance'
+import SingleEvent from './components/events/SingleEvent'
+import StudentPerformance from './components/Performance'
+import Attendance from './components/Attendance'
+import Exams from './components/Exams'
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(
   <BrowserRouter>
     <Routes>
     <Route element={<StudentPrivate />}>
@@ -32,7 +42,11 @@ ReactDOM.render(
       <Route path="/Logout" element={<Login/>} />
       <Route path="/Profile" element={<Profile/>} />
       <Route path="/Courses" element={<Courses/>} />
+      <Route path="/Performance" element={<StudentPerformance/>} />
+      <Route path="/Attendance" element={<Attendance/>} />
+      <Route path="/Exams" element={<Exams/>} />
       <Route path="/Events" element={<Events/>} />
+      <Route path="/Event/:id" element={<SingleEvent/>} />
       <Route path="/Feedback" element={<Feedback/>} />
       </Route>
       <Route  path="/" element={<Login/>} />
@@ -41,9 +55,13 @@ ReactDOM.render(
       <Route path="/admin/timeline" element={<Dashboard/>} />
       <Route path="/admin/Add_Students" element={<AddStudent/>} />
       <Route path="/admin/Add_Events" element={<AddEvents/>} />
+      <Route path="/admin/Add_Routine" element={<AddRoutine/>} />
+      <Route path="/admin/Performance" element={<Performance/>} />
       <Route path="/admin/Student_Batch" element={<StudentBatch/>} />
-      <Route path="/admin/Student_Batch/:batch/:section" element={<Students/>} />
-      <Route path="/admin/Student_Batch/:batch/:section/:id" element={<StudentInfo/>} />
+      <Route path="/admin/Student_Batch/:batch" element={<StudentFaculty/>} />
+      <Route path="/admin/Student_Batch/:batch/:faculty" element={<StudentSection/>} />
+      <Route path="/admin/Student_Batch/:batch/:faculty/:section" element={<Students/>} />
+      <Route path="/admin/Student_Batch/:batch/:faculty/:section/:id" element={<StudentInfo/>} />
       <Route path="/admin/Feedbacks" element={<Feedbacks/>} />
       
       </Route>
@@ -52,6 +70,6 @@ ReactDOM.render(
      
       
     </Routes>
-  </BrowserRouter>,
-  document.getElementById("root")
+  </BrowserRouter>
+ 
 );

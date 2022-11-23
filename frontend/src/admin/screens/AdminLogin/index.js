@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
 import logo from './../../../assets/clg.jpg'
@@ -12,12 +12,12 @@ const Index = () => {
   const [password, setPassword] = useState("");
 
 
-  // useEffect(()=>{
-  //   const auth= localStorage.getItem('adminToken');
-  //   if(auth){
-  //     navigate('/admin/timeline')
-  //   }
-  // })
+  useEffect(()=>{
+    const auth= localStorage.getItem('adminToken');
+    if(auth){
+      navigate('/admin/timeline')
+    }
+  })
 
   const loginuser = async (e) => {
     e.preventDefault();

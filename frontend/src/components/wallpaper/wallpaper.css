@@ -2,12 +2,12 @@
   margin-left: 5px !important;
   margin-bottom: 5px !important;
 }
-.wallpaper .image {
+.wall_image {
   height: 25vh;
   margin: 0px;
-  background-image: url("../../assets/wallpaper.jpeg");
+  background-image: url("../../assets/advancedcollege.jpg");
   background-size: cover !important;
-  background-position: center  !important;
+  background-position: center !important; 
 }
 .wallpaper .text {
   border-radius: 0px;

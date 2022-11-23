@@ -9,16 +9,17 @@
 }
 .sidebar {
   flex: 1;
+ width: 100%;
 }
 .main_container {
-  padding: 20px 80px;
+  padding: 20px 50px;
   flex: 5;
   /* margin-left: 280px; */
   
 }
 .event_form{
   padding: 40px 40px;
-  width: 800px;
+  width: 600px;
   background-color: rgb(255, 255, 255);
   height: 95vh;
   border-radius: 10px;
@@ -45,4 +46,40 @@
   padding: 10px 15px;
   background-color: rgb(62, 107, 202);
   color: white;
+}
+.photoupload{
+  display: flex;
+  flex-direction: column;
+  
+}
+.photoupload input{
+  border: none;
+}
+.prevEvent_h1{
+  text-align: center;
+  margin-top: 20px;
+  font-size: x-large;
+  background-color: black;
+  padding: 10px 10px;
+  color: white;
+  border-left: 5px solid rgb(62, 107, 202);
+}
+.PreviousEvents{
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 350px;
+  background-color: #fff;
+  height: 100%;
+  overflow: auto;
+}
+.insideEvents{
+  overflow: auto;
+}
+::-webkit-scrollbar{
+  width: 5px;
+}
+::-webkit-scrollbar-thumb{
+  background-color: rgb(62, 107, 202);
+  border-radius: 10px;
 }

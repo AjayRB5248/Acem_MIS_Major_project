@@ -28,29 +28,36 @@ const getStudentById = async (req, res) => {
   if (!student) {
     return res.status(404).json({ message: "No Student Found" });
   }
-  return res.status(200).json({ student });
+  return res.status(200).json([student]);
 };
 
-
 const getStudentByBatchAndSection = async (req, res) => {
-  const {batch,section} = req.params;
-  await Student.find({ batch: batch,section:section
-  })
+  const perPage = 12;
+  const { batch, faculty, section, page } = req.params;
+  const skip = (page - 1) * perPage;
+  const count = await Student.find({
+    batch: batch,
+    section: section,
+    faculty: faculty,
+  }).countDocuments();
+  await Student.find({ batch: batch, section: section, faculty: faculty })
+    .skip(skip)
+    .limit(perPage)
+    .sort({ name: "asc" })
 
     .then((student) => {
-      res.status(200).json(student);
+      res.status(200).json({ student, count, perPage });
     })
     .catch((err) => {
       res.status(400).json(err);
     });
 };
 
-
 const getStudents = async (req, res) => {
   const count = await Student.find({}).countDocuments();
   await Student.find()
     .then((students) => {
-      res.status(200).json({students,count});
+      res.status(200).json({ students, count });
     })
     .catch((err) => {
       res.status(400).json(err);
@@ -131,49 +138,60 @@ const createStudent = async (req, res) => {
   });
 };
 
-// const updateStudent = async (req, res) => {
-//   const {
-//     name,
-//     cid,
-//     email,
-//     batch,
-//     faculty,
-//     section,
-//     location,
-//     gender,
-//     Dob,
-//     height,
-//     weight,
-//     bloodgroup,
-//     hometown,
-//     contact,
-//     fathername,
-//     mothername,
-//     fathercontact,
-//   } = req.body;
+const updateStudent = async (req, res) => {
+  const {
+    name,
+    cid,
+    email,
+    batch,
+    faculty,
+    section,
+    location,
+    gender,
+    Dob,
+    height,
+    weight,
+    bloodgroup,
+    hometown,
+    contact,
+    fathername,
+    mothername,
+    fathercontact,
+  } = req.body;
+  
+  
+    const student = await Student.findByIdAndUpdate(
+      req.params.id,
+      {
+        name,
+        cid,
+        email,
+        batch,
+        faculty,
+        section,
+        location,
+        gender,
+        Dob,
+        height,
+        weight,
+        bloodgroup,
+        hometown,
+        contact,
+        fathername,
+        mothername,
+        fathercontact,
+      },
+      { new: true }
+    );
+    try {
+      student.save();
+    } catch (err) {
+      console.log(err);
+    }
+    return res.status(201).json({ student });
+};
 
-//   const student = await Student.findById(req.params.id);
-//   if (student) {
-//     student.name = name;
-//     student.cid = cid;
-//     student.email = email;
-//     student.batch = batch;
-//     student.faculty = faculty;
-//     student.section = section;
-//     student.location = location;
-//     student.gender = gender;
-//     student.Dob = Dob;
-//     student.height = height;
-//     student.weight = weight;
-//     student.bloodgroup = bloodgroup;
-//     student.hometown = hometown;
-//     student.contact = contact;
-//     student.fathername = fathername;
-//     student.mothername = mothername;
-//     student.fathercontact = fathercontact;
-//   }
 
-// };
 
 const deleteStudent = async (req, res) => {
   const student = await Student.findByIdAndDelete(req.params.id);
@@ -189,5 +207,6 @@ module.exports = {
   createStudent,
   deleteStudent,
   getStudentByBatchAndSection,
-  getStudentById
+  getStudentById,
+  updateStudent
 };

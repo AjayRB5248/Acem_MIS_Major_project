@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css";
+import "./wallpaper.css";
 import { useNavigate } from "react-router-dom";
 
 const Index = () => {
@@ -15,7 +15,7 @@ const Index = () => {
 
   return (
     <div className="wallpaper">
-      <div className="image"></div>
+      <div className="wall_image"></div>
       <div className="text d-flex">
         <div className="image-upload">
           <label>

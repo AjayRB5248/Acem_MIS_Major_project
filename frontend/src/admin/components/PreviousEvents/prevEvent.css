@@ -3,12 +3,9 @@
 * {
   font-family: "Poppins", sans-serif;
 }
-.events {
+.Admin_events {
   display: flex;
   overflow: hidden;
-}
-.sidebar {
-  flex: 1;
 }
 .main_container {
   padding: 20px 80px;
@@ -21,26 +18,26 @@
     cursor: pointer;
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 260px;
   height: max-content;
   /* height: 180px; */
   background-color: white;
   margin-left: 5px;
-  /* margin-bottom: 5px; */
+  border: 1px solid black;
   padding: 20px 25px;
 }
 
 .event_box h1{
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .event_box h6 {
-  font-size: 15px;
+  font-size: 10px;
   color: gray;
 }
 
 .event_box p {
-  font-size: 15px;
+  font-size: 10px;
   color: gray;
 }
 

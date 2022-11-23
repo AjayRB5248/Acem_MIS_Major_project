@@ -8,7 +8,7 @@ const Index = () => {
   const [events, setEvents] = useState([]);
   useEffect(() => {
     const event = async () => {
-      const response = await axios.get(`http://localhost:8000/api/events`);
+      const response = await axios.get(`http://localhost:8000/api/events/1`);
       console.log(response.data);
       setEvents(response.data.count);
     };

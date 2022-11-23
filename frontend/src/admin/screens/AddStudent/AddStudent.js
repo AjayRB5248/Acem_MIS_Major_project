@@ -1,37 +1,19 @@
 import * as React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
-import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Toolbar from "@mui/material/Toolbar";
 import Paper from "@mui/material/Paper";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
-import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import StudentInfo from "./StudentInfo/StudentInfo";
 import BasicInfo from "./BasicInfo/BasicInfo";
-// import "./style.css";
-// import logo from "../assets/clg.jpg";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        ACEM MIS
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
 
 const steps = ["Basic Information", "College Details"];
 
@@ -54,7 +36,7 @@ export default function AddStudent() {
     name: "",
     cid: "",
     email: "",
-    profile:'',
+    profile: "",
     batch: "2075",
     faculty: "BCT",
     section: "A",
@@ -76,47 +58,45 @@ export default function AddStudent() {
   const handleNext = async () => {
     setActiveStep(activeStep + 1);
     if (activeStep === 1) {
-      let url= "http://localhost:5000/api/student"
+      let url =
+        "https://student-login-portal-mern-mis.herokuapp.com/api/student";
       const formData = new FormData();
       formData.append("name", state.name);
       formData.append("cid", state.cid);
       formData.append("email", state.email);
-      formData.append("profile", state.profile,state.profile.name);
+      formData.append("profile", state.profile);
       formData.append("batch", state.batch);
       formData.append("faculty", state.faculty);
       formData.append("section", state.section);
       formData.append("location", state.location);
-      formData.append('gender',state.gender)
-      formData.append('Dob',state.Dob)
-      formData.append('height',state.height)
-      formData.append('weight',state.weight)
-      formData.append('bloodgroup',state.bloodgroup)
-      formData.append('hometown',state.hometown)
-      formData.append('contact',state.contact)
-      formData.append('fathername',state.fathername)
-      formData.append('mothername',state.mothername)
-      formData.append('fathercontact',state.fathercontact)
-console.log(state.profile, state.profile.name)
+      formData.append("gender", state.gender);
+      formData.append("Dob", state.Dob);
+      formData.append("height", state.height);
+      formData.append("weight", state.weight);
+      formData.append("bloodgroup", state.bloodgroup);
+      formData.append("hometown", state.hometown);
+      formData.append("contact", state.contact);
+      formData.append("fathername", state.fathername);
+      formData.append("mothername", state.mothername);
+      formData.append("fathercontact", state.fathercontact);
+      console.log(state.profile.file);
       try {
-        const response = await axios.post(
-          url,
-          formData,
-        );
-        if(response.status===201){
-        toast.success('Submitted Successfully', {
-          position: "top-center",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
+        const response = await axios.post(url, formData);
+        if (response.status === 201) {
+          toast.success("Submitted Successfully", {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
           });
         }
       } catch (err) {
         console.log(err);
-        toast.error('Something Went Wrong', {
+        toast.error("Something Went Wrong", {
           position: "top-center",
           autoClose: 3000,
           hideProgressBar: false,
@@ -125,9 +105,8 @@ console.log(state.profile, state.profile.name)
           draggable: true,
           progress: undefined,
           theme: "dark",
-          });
+        });
       }
-      
     }
   };
 
@@ -138,41 +117,7 @@ console.log(state.profile, state.profile.name)
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBar
-        position="absolute"
-        color="primary"
-        elevation={0}
-        sx={{
-          position: "relative",
-          borderBottom: (t) => `1px solid ${t.palette.divider}`,
-        }}
-      >
-        <ToastContainer
-          position="top-center"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="dark"
-        />
-        <Toolbar>
-          <Typography
-            variant="h6"
-            color="inherit"
-            noWrap
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-          >
-          
-            <span className="heading">ACEM MIS</span>
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <ToastContainer />
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
         <Paper
           variant="outlined"
@@ -191,12 +136,12 @@ console.log(state.profile, state.profile.name)
           {activeStep === steps.length ? (
             <React.Fragment>
               <Typography variant="h5" gutterBottom>
-                Thank you for your Information.
+                Waiting...
               </Typography>
-              <Typography variant="subtitle1">
+              {/* <Typography variant="subtitle1">
                 Your information is collected for our Major project which is a
                 College Management System.
-              </Typography>
+              </Typography> */}
             </React.Fragment>
           ) : (
             <React.Fragment>
@@ -219,7 +164,6 @@ console.log(state.profile, state.profile.name)
             </React.Fragment>
           )}
         </Paper>
-        <Copyright />
       </Container>
     </ThemeProvider>
   );

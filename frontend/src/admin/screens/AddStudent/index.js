@@ -1,18 +1,19 @@
 import React from "react";
 import Sidebar from '../../components/sidebar'
-// import AddStudent from "./AddStudent";
+import AddStudent from "./AddStudent";
 import "./index.css";
+import { Grid } from "@material-ui/core";
 
 const index = () => {
   return (
-    <div className="addStudent">
-      <div className="sidebar">
-        <Sidebar />
-      </div>
+    <Grid container direction="row" spacing={1}>
+    <Grid item xs={2}>
+      <Sidebar />
+    </Grid>
       <div className="main_container">
-        {/* <AddStudent/> */}
+        <AddStudent/>
       </div>
-    </div>
+      </Grid>
   );
 };
 

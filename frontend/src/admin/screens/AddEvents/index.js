@@ -4,6 +4,8 @@ import "./index.css";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import PreviousEvents from "../../components/PreviousEvents";
+import { Grid } from "@material-ui/core";
 
 const Index = () => {
   const [state, setState] = useState({
@@ -73,11 +75,11 @@ const Index = () => {
     });
   };
   return (
-    <div className="addEvent">
+    <Grid container direction="row" spacing={1}>
       <ToastContainer />
-      <div className="sidebar">
+      <Grid item xs={2}>
         <Sidebar />
-      </div>
+      </Grid>
       <div className="main_container">
         <form className="event_form" onSubmit={handleSubmit}>
           <h1 className="">Add Event</h1>
@@ -120,7 +122,7 @@ const Index = () => {
             />
           </div>
 
-          <div className="event_info">
+          <div className="photoupload">
             <label className="">Event Photo:</label>
             <input type="file" name="photo" onChange={handleImage} />
           </div>
@@ -129,7 +131,13 @@ const Index = () => {
           </div>
         </form>
       </div>
-    </div>
+      <div className="PreviousEvents">
+        <h1 className="prevEvent_h1">Previous Events</h1>
+        <div className="insideEvents">
+          <PreviousEvents />
+        </div>
+      </div>
+    </Grid>
   );
 };
 

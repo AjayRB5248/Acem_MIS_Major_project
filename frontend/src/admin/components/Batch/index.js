@@ -10,7 +10,7 @@ const Index = () => {
   useEffect(() => {
     const batch = async () => {
       const response = await axios.get(`http://localhost:8000/api/batch`);
-      console.log(response.data);
+      // console.log(response.data);
       setBatches(response.data);
     };
     batch();
@@ -19,11 +19,11 @@ const Index = () => {
     <>
 {
   batches.map((batch) => (
-    <Link to={`/admin/Student_Batch/${batch.batch}/${batch.section}`}>
+    <Link to={`/admin/Student_Batch/${batch.batch}`}>
     <div className="Student_batch" key={batch.batch}>
       <h1><FaUserGraduate/> {batch.batch}</h1>
       <h5>Batch</h5>
-      <h5>Section:{batch.section}</h5>
+      {/* <h5>Section:{batch.section}</h5> */}
     </div>
     </Link>
   ))

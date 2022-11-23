@@ -21,7 +21,12 @@ const eventSchema = mongoose.Schema({
     type:String,
     required:true,
   },
-});
+  timestamp: {
+    type: Date,
+    default: Date.now,
+  },
+},
+);
 
 const Event = mongoose.model("Event", eventSchema);
 module.exports = Event;

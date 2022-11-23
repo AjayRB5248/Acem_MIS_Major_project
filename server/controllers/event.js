@@ -9,14 +9,27 @@ cloudinary.config({
 const Event = require("../models/eventModel");
 
 const getEvents = async (req, res) => {
+  const { page } = req.params;
+    const perPage = 3;
+    const skip = (page - 1) * perPage;
   const count = await Event.find({}).countDocuments();
-  await Event.find()
+  await Event.find().skip(skip)
+  .limit(perPage)
+  .sort({timestamp:-1})
     .then((events) => {
-      res.status(200).json({events,count});
+      res.status(200).json({ events, count,perPage });
     })
     .catch((err) => {
       res.status(400).json(err);
     });
+};
+const getprevEvents = async (req, res) => {
+  try {
+    const events = await Event.find().sort({ timestamp: -1 });
+    res.status(200).json({ events });
+  } catch (err) {
+    res.status(400).json(err);
+  }
 };
 
 const getEventById = async (req, res) => {
@@ -32,7 +45,6 @@ const getEventById = async (req, res) => {
   }
   return res.status(200).json({ event });
 };
-
 
 const createEvent = async (req, res) => {
   const photo = req.files.photo;
@@ -81,5 +93,6 @@ module.exports = {
   createEvent,
 
   deleteEvent,
-  getEventById
+  getEventById,
+  getprevEvents,
 };

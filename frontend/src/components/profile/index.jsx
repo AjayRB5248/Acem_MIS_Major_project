@@ -21,8 +21,8 @@ export default class Profile extends Component {
       <Fragment>
         {/* <Header {...this.props} /> */}
         <div className="App">
-          <Grid container direction="row" alignItems="stretch">
-            <Grid item xs>
+          <Grid container direction="row" >
+            <Grid item xs={2}>
               <Sidebar />
             </Grid>
             <Grid item xs={10}>
