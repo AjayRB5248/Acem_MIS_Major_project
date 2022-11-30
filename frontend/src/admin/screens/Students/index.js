@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import "./index.css";
 import { Link } from "react-router-dom";
 import Pagination from "@mui/material/Pagination";
+import { Grid } from "@material-ui/core";
 
 const Index = () => {
   const [page, setPage] = useState(1);
@@ -27,10 +28,10 @@ const Index = () => {
     student();
   }, [batch, section, faculty, page]);
   return (
-    <div className="Student_Batch">
-      <div className="sidebar">
-        <Sidebar />
-      </div>
+    <Grid container direction="row" spacing={1}>
+    <Grid item xs={2}>
+      <Sidebar />
+    </Grid>
       <div className="main_container">
         <div className="TotalStudent">
           <h1>Total Students:{data.count}</h1>
@@ -78,7 +79,7 @@ const Index = () => {
           {/* </Stack> */}
         </div>
       </div>
-    </div>
+      </Grid>
   );
 };
 

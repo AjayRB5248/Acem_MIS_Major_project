@@ -4,6 +4,7 @@ import Sidebar from "./../sidebar";
 import Wallpaper from "../wallpaper";
 import { Grid, Paper, Tabs, Tab } from "@material-ui/core";
 import VerTabs from "../verTabs";
+import './style.css'
 // import axios from "axios";
 export default class Profile extends Component {
   constructor(props) {
@@ -21,10 +22,10 @@ export default class Profile extends Component {
       <Fragment>
         {/* <Header {...this.props} /> */}
         <div className="App">
-          <Grid container direction="row" >
-            <Grid item xs={2}>
-              <Sidebar />
-            </Grid>
+        <Grid container direction="row" spacing={1}>
+        <Grid item xs={2}>
+          <Sidebar />
+        </Grid>
             <Grid item xs={10}>
               <Wallpaper user={this.state.user} />
               <Grid container>

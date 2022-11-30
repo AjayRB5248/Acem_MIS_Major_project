@@ -59,6 +59,7 @@ const Index = () => {
       description: "",
       photo: "",
     });
+    window.location.reload();
   };
 
   const handleState = (e) => {

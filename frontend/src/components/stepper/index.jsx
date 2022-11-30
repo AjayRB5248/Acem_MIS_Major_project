@@ -36,7 +36,7 @@ function getStepContent(step) {
       return `Details regarding BCT III year`;
     case 3:
       return `You are in the final year BCT,
-        Your Aggregate Marks is : 70%`;
+        Your Aggregate Marks is : __`;
     default:
       return "Unknown step";
   }

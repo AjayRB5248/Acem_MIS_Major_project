@@ -10,4 +10,4 @@ router.delete('/event/:id',deleteEvent);
 
 
 
-module.exports = router;
+module.exports = router; 

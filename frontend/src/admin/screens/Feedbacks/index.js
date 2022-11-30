@@ -5,6 +5,7 @@ import axios from "axios";
 import Pagination from "@mui/material/Pagination";
 import { Grid } from "@material-ui/core";
 import moment from "moment";
+import { RiDeleteBinLine } from "react-icons/ri";
 
 const Index = () => {
   // const auth = localStorage.getItem("model");
@@ -25,6 +26,20 @@ const Index = () => {
     };
     feedback();
   }, [page]);
+
+  const delFeedback = async (id) => {
+    console.log(id);
+
+    await axios.delete(`http://localhost:8000/api/feedback/${id}`);
+    window.location.reload();
+  };
+
+  useEffect(() => {
+   
+      delFeedback();
+    
+  }, []);
+
   return (
     <Grid container direction="row" spacing={1}>
       <Grid item xs={2}>
@@ -44,7 +59,10 @@ const Index = () => {
                 </div>
                 <div className={styles.info}>
                   <h3 className={styles.name}>{feedback.student.name}</h3>
-                  <h4>Added: {moment(feedback.timestamp).startOf('day').fromNow()}</h4>
+                  <h4>
+                    Added:{" "}
+                    {moment(feedback.timestamp).startOf("hour").fromNow()}
+                  </h4>
                   <div className={styles.clz_info}>
                     <p className={styles.batch}>
                       Batch:{feedback.student.batch}
@@ -52,6 +70,12 @@ const Index = () => {
                     <p className={styles.section}>
                       section:{feedback.student.section}
                     </p>
+                    <h5 className={styles.delete}>
+                      <RiDeleteBinLine
+                        className="deleteIcon"
+                        onClick={()=>delFeedback(feedback._id)}
+                      />
+                    </h5>
                   </div>
                 </div>
               </div>

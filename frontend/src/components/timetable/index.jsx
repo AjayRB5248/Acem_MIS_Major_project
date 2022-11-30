@@ -48,26 +48,27 @@ const Index = () => {
               <h5>Happy Holiday</h5>
             </div>
           ) : (
-            routines.map((routine) => (
+            routines?.map((routine) => (
               <>
                 <div className="col-3 time">
                   <div className="mb-3 ">
                     <h6>{routine?.starttime}</h6>
-                    <h6>{routine.endtime}</h6>
+                    <h6>{routine?.endtime}</h6>
                   </div>
                 </div>
                 <div className="col-6">
                   <div className="course">
                     <div>
-                      <h6>{routine.subject}</h6>
-                      <p>Roomno.{routine.roomNo}</p>
+                      <h6>{routine?.subject}</h6>
+                      {/* <p>Roomno.{routine?.roomNo}</p> */}
                     </div>
-                    <p>{routine.teacherName}</p>
+                    <p>{routine?.teacherName}</p>
                   </div>
                 </div>
               </>
             ))
           )}
+          
         </div>
       </div>
       <hr />

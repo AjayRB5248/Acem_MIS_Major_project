@@ -7,7 +7,7 @@ import Chart from "../../components/Chart";
 import Event from "../../components/Events";
 import { Grid } from "@material-ui/core";
 import Calendar from "react-calendar";
-// import SearchStudent from "../../components/SearchStudent";
+import SearchStudent from "../../components/SearchStudent";
 
 const Index = () => {
   return (
@@ -16,9 +16,9 @@ const Index = () => {
         <Sidebar />
       </Grid>
       <div className="main">
-        {/* <div className="search">
+        <div className="search">
           <SearchStudent />
-        </div> */}
+        </div>
         <div className="small_components">
           <Totalstudents />
           <TotalFeedback />

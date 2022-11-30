@@ -31,6 +31,7 @@ import SingleEvent from './components/events/SingleEvent'
 import StudentPerformance from './components/Performance'
 import Attendance from './components/Attendance'
 import Exams from './components/Exams'
+import SearchedStudent from './admin/screens/SearchedStudent';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -58,6 +59,7 @@ root.render(
       <Route path="/admin/Add_Routine" element={<AddRoutine/>} />
       <Route path="/admin/Performance" element={<Performance/>} />
       <Route path="/admin/Student_Batch" element={<StudentBatch/>} />
+      <Route path="/admin/SearchedStudent/:name" element={<SearchedStudent/>} />
       <Route path="/admin/Student_Batch/:batch" element={<StudentFaculty/>} />
       <Route path="/admin/Student_Batch/:batch/:faculty" element={<StudentSection/>} />
       <Route path="/admin/Student_Batch/:batch/:faculty/:section" element={<Students/>} />

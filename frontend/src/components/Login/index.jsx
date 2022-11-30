@@ -18,6 +18,11 @@ const Index = () => {
     }
   });
 
+  // const handleGuest =()=>{
+  //   setEmail("ajay.075bct005@acem.edu.np");
+  //   setCid("ACE075BCT005");
+  // }
+
   const loginuser = async (e) => {
     e.preventDefault();
 
@@ -90,6 +95,7 @@ const Index = () => {
               <button className="btn btn-light" type="submit">
                 Login
               </button>
+              {/* <button className="guestButton" onClick={handleGuest}>Guest Login</button> */}
             </div>
           </form>
         </div>

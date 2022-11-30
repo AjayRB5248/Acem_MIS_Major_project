@@ -18,6 +18,19 @@ const getStudent = async (req, res) => {
     });
 };
 
+const searchStudent = async (req, res) => {
+  const { name } = req.params;
+  // const option=name && { name: { $regex: `${name}`, $options: "i" } }
+  await Student.find({name: { $regex: `${name}`, $options: "i" }})
+    .then((student) => {
+      res.status(200).json(student);
+    })
+    .catch((err) => {
+      res.status(400).json(err);
+    });
+};
+
+
 const getStudentById = async (req, res) => {
   let student;
   try {
@@ -208,5 +221,6 @@ module.exports = {
   deleteStudent,
   getStudentByBatchAndSection,
   getStudentById,
-  updateStudent
+  updateStudent,
+  searchStudent
 };

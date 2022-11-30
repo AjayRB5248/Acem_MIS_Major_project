@@ -107,6 +107,7 @@ export default function AddStudent() {
           theme: "dark",
         });
       }
+      window.location.reload();
     }
   };
 

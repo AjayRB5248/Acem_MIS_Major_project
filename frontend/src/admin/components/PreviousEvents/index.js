@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./prevEvent.css";
 import axios from "axios";
+import { RiDeleteBinLine } from "react-icons/ri";
 
 const Index = () => {
   const [events, setEvents] = useState([]);
@@ -13,14 +14,32 @@ const Index = () => {
     };
     event();
   }, []);
+
+  // const delEvent = async (eventid) => {
+  //   console.log(eventid);
+  //   await axios.delete(`http://localhost:8000/api/event/${eventid}`);
+  //   window.location.reload();
+  // };
+
+  //   delEvent();
+
+
   return (
     <div className="Admin_events">
       <div className="main_container">
         {events.map((event) => (
           <div className="event_box" key={event.date}>
             <h1>{event.eventName}</h1>
-            <h6>Date:{event.date}</h6>
-            <p>Venue:{event.venue}</p>
+            <div className="event_textInfo">
+              <div className="eventInfo">
+                <h6>Date:{event.date}</h6>
+                <p>Venue:{event.venue}</p>
+              </div>
+
+              <div className="deleteEvent">
+                <RiDeleteBinLine  />
+              </div>
+            </div>
             {/* <p>About Event: <br/>{event.description}</p> */}
             <img src={event.photo} alt={event.photo} />
           </div>

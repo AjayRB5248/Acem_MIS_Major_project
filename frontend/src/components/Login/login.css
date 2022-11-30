@@ -113,7 +113,10 @@ input::placeholder {
 }
 
 .login-form-btn .btn {
+  /* display: flex;
+  flex-direction: column; */
   font-family: "Oxygen";
+  text-align: center;
   font-weight: 500;
   font-size: 1.1rem;
   color: #555555;
@@ -129,15 +132,17 @@ input::placeholder {
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;
   transition: all 0.4s;
+  gap: 20px;
 }
 
 .login-form-btn .btn:hover {
   color: #fff;
-  background-color: #555555;
+  background-color: #2883ec;
 }
 .login-form-btn .btn:hover:disabled {
-  color: #555555;
+  color: #2883ec;
   background-color: #ffffff;
+  
 }
 @media (max-width: 576px) {
   .wrap-login {
@@ -152,3 +157,11 @@ input::placeholder {
   cursor: pointer;
   text-decoration: underline;
 }
+/* .guestButton{
+  padding: 10px;
+  border-radius: 30px;
+  border: none;
+  background-color: aquamarine;
+  color: #333333;
+  cursor: pointer;
+} */

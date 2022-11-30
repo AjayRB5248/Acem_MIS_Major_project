@@ -17,7 +17,7 @@ const Index = () => {
           <Wallpaper />
           <Grid container direction="row">
             <Grid item xs={7}>
-              <div className="course">
+              <div className="courseModule">
                 <h5>8th Semester</h5>
                 <hr />
                 <div className="col-7">

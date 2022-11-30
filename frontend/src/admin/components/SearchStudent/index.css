@@ -2,16 +2,18 @@
     position: relative;
 }
 
-.searchBox input{
+.searchBox textarea{
     width: 950px;
-    height: 50px;
+    height: 60px;
     border: none;
     border-radius: 10px;
     align-items: center;
     padding: 20px;
+    resize: none;
+    overflow: hidden;
    
 }
-.searchBox input:focus{
+.searchBox textarea:focus{
     outline: none;
 }
 .searchIcon{

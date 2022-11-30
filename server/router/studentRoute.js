@@ -6,6 +6,7 @@ const {
   deleteStudent,
   getStudentById,
   updateStudent,
+  searchStudent,
   getStudentByBatchAndSection,
 } = require("../controllers/student");
 const router = express.Router();
@@ -16,6 +17,7 @@ router.get(
   "/students/:batch/:faculty/:section/:page",
   getStudentByBatchAndSection
 );
+router.get("/searchStudent/:name", searchStudent);
 router.get("/students/:id", getStudent);
 router.post("/student", createStudent);
 router.put("/student/:id", updateStudent);

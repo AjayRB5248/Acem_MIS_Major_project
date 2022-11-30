@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import "./index.css";
 import { BiSearchAlt } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
-const index = () => {
+const Index = () => {
+  const [name, setName] = useState("");
   return (
     <div className="searchBox">
-      <input type="text" placeholder="Search For Student.." value='' />
-      <BiSearchAlt className="searchIcon" />
+      <textarea
+        type="text"
+        placeholder="Search For Student.."
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+      <Link to={`/admin/SearchedStudent/${name}`}>
+        <BiSearchAlt className="searchIcon" />
+      </Link>
     </div>
   );
 };
 
-export default index;
+export default Index;

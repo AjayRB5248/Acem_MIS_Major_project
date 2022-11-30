@@ -2,7 +2,7 @@ import React from "react";
 import { Bar } from "react-chartjs-2";
 
 const state = {
-  labels: ["January", "February", "March", "April", "May", "June"],
+  labels: ["July", "August", "September", "October", "November", "December"],
   datasets: [
     {
       label: "Attendance",

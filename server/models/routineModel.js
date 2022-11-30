@@ -12,36 +12,32 @@ const routineSchema = mongoose.Schema({
   faculty: {
     type: String,
     required: true,
-    },
-  day:{
+  },
+  day: {
     type: String,
     required: true,
   },
-  routine:[{
-            starttime:{
-                type: String,
-                required: true,
-            },
-            endtime:{
-                type: String,
-                required: true,
-        },
-        subject:{
-            type: String,
-            required: true,
-        },
-        teacherName:{
-            type: String,
-            required: true,
-        },
-        roomNo:{
-            type: String,
-            required: true,
-        },
-    }
-]
+  routine: [
+    {
+      starttime: {
+        type: String,
+        required: true,
+      },
+      endtime: {
+        type: String,
+        required: true,
+      },
+      subject: {
+        type: String,
+        required: true,
+      },
+      teacherName: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
 });
-  
 
 const Routine = mongoose.model("Routine", routineSchema);
 module.exports = Routine;
