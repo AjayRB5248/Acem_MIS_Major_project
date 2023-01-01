@@ -5,7 +5,7 @@ const batchSchema = mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-  }
+  },
 });
 
 const Batch = mongoose.model("batchSection", batchSchema);

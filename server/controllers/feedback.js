@@ -4,24 +4,26 @@ const mongoose = require("mongoose");
 
 const getFeedbacks = async (req, res) => {
   const { page } = req.params;
-    const perPage = 6;
-    const skip = (page - 1) * perPage;
+  const perPage = 6;
+  const skip = (page - 1) * perPage;
   const count = await Feedback.find({}).countDocuments();
   let feedbacks;
   try {
-    feedbacks = await Feedback.find().populate({
-      path: "student",
-      select: "name batch section faculty profile",
-    }).skip(skip)
-    .limit(perPage)
-    .sort({timestamp:-1});
+    feedbacks = await Feedback.find()
+      .populate({
+        path: "student",
+        select: "name batch section faculty profile",
+      })
+      .skip(skip)
+      .limit(perPage)
+      .sort({ timestamp: -1 });
   } catch (err) {
     return console.log(err);
   }
   if (!feedbacks) {
     return res.status(404).json({ message: "No Feedbacks Found" });
   }
-  return res.status(200).json({ feedbacks ,perPage,count});
+  return res.status(200).json({ feedbacks, perPage, count });
 };
 
 const getFeedbackById = async (req, res) => {
@@ -108,4 +110,10 @@ const getByUserId = async (req, res) => {
   return res.status(200).json({ student: studentFeedbacks });
 };
 
-module.exports = { getFeedbacks, createFeedback, deleteFeedback, getByUserId ,getFeedbackById};
+module.exports = {
+  getFeedbacks,
+  createFeedback,
+  deleteFeedback,
+  getByUserId,
+  getFeedbackById,
+};

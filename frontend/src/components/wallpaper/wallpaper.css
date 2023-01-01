@@ -23,6 +23,7 @@
   bottom: 100px;
   background-color: white;
   border: 3px solid white;
+  object-fit: cover;
 }
 .wallpaper .text .list {
   list-style: none;

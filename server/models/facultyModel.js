@@ -4,8 +4,7 @@ const facultySchema = mongoose.Schema({
   faculty: {
     type: String,
     required: true,
-    
-    },  
+  },
 });
 
 const Faculty = mongoose.model("facultie", facultySchema);

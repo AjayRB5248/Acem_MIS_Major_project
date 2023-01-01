@@ -21,6 +21,22 @@
   gap: 60px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+.stdName{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: space-between;
+}
+.stdName h1{
+  font-size: 30px;
+}
+.stdName button{
+border: none;
+padding: 15px 15px;
+background-color:  rgb(62, 107, 202);
+cursor: pointer;
+color: white;
+}
 
 .profileImage img {
   height: 500px;

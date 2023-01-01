@@ -18,18 +18,13 @@ const feedbackSchema = mongoose.Schema({
     type: mongoose.Types.ObjectId,
     ref: "Student",
     required: true,
-    strictPopulate:false,
+    strictPopulate: false,
   },
 });
-
-
-
 
 const Feedback = mongoose.model("Feedback", feedbackSchema);
 module.exports = Feedback;
 
-Feedback.count({}, function( err, count){
-  console.log( "Number of feedbacks:", count );
-})
-
-
+Feedback.count({}, function (err, count) {
+  console.log("Number of feedbacks:", count);
+});

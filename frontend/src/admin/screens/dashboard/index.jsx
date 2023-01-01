@@ -28,7 +28,7 @@ const Index = () => {
           <div className="chart">
             <Chart />
           </div>
-          <Grid item xs={4} clasName="calendar">
+          <Grid item xs={4} className="calendar">
             <Calendar />
           </Grid>
         </div>

@@ -32,6 +32,7 @@ import StudentPerformance from './components/Performance'
 import Attendance from './components/Attendance'
 import Exams from './components/Exams'
 import SearchedStudent from './admin/screens/SearchedStudent';
+import UpdateStudent from './admin/screens/UpdateStudent';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -55,6 +56,7 @@ root.render(
       <Route element={<AdminPrivate />}>
       <Route path="/admin/timeline" element={<Dashboard/>} />
       <Route path="/admin/Add_Students" element={<AddStudent/>} />
+      <Route path="/admin/UpdateStudent/:id" element={<UpdateStudent/>} />
       <Route path="/admin/Add_Events" element={<AddEvents/>} />
       <Route path="/admin/Add_Routine" element={<AddRoutine/>} />
       <Route path="/admin/Performance" element={<Performance/>} />

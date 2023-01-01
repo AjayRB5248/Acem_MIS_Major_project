@@ -21,7 +21,7 @@ const getStudent = async (req, res) => {
 const searchStudent = async (req, res) => {
   const { name } = req.params;
   // const option=name && { name: { $regex: `${name}`, $options: "i" } }
-  await Student.find({name: { $regex: `${name}`, $options: "i" }})
+  await Student.find({ name: { $regex: `${name}`, $options: "i" } })
     .then((student) => {
       res.status(200).json(student);
     })
@@ -29,7 +29,6 @@ const searchStudent = async (req, res) => {
       res.status(400).json(err);
     });
 };
-
 
 const getStudentById = async (req, res) => {
   let student;
@@ -171,40 +170,37 @@ const updateStudent = async (req, res) => {
     mothername,
     fathercontact,
   } = req.body;
-  
-  
-    const student = await Student.findByIdAndUpdate(
-      req.params.id,
-      {
-        name,
-        cid,
-        email,
-        batch,
-        faculty,
-        section,
-        location,
-        gender,
-        Dob,
-        height,
-        weight,
-        bloodgroup,
-        hometown,
-        contact,
-        fathername,
-        mothername,
-        fathercontact,
-      },
-      { new: true }
-    );
-    try {
-      student.save();
-    } catch (err) {
-      console.log(err);
-    }
-    return res.status(201).json({ student });
+
+  const student = await Student.findByIdAndUpdate(
+    req.params.id,
+    {
+      name,
+      cid,
+      email,
+      batch,
+      faculty,
+      section,
+      location,
+      gender,
+      Dob,
+      height,
+      weight,
+      bloodgroup,
+      hometown,
+      contact,
+      fathername,
+      mothername,
+      fathercontact,
+    },
+    { new: true }
+  );
+  try {
+    student.save();
+  } catch (err) {
+    console.log(err);
+  }
+  return res.status(201).json({ student });
 };
-
-
 
 const deleteStudent = async (req, res) => {
   const student = await Student.findByIdAndDelete(req.params.id);
@@ -222,5 +218,5 @@ module.exports = {
   getStudentByBatchAndSection,
   getStudentById,
   updateStudent,
-  searchStudent
+  searchStudent,
 };

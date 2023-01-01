@@ -10,14 +10,15 @@ const Event = require("../models/eventModel");
 
 const getEvents = async (req, res) => {
   const { page } = req.params;
-    const perPage = 3;
-    const skip = (page - 1) * perPage;
+  const perPage = 3;
+  const skip = (page - 1) * perPage;
   const count = await Event.find({}).countDocuments();
-  await Event.find().skip(skip)
-  .limit(perPage)
-  .sort({timestamp:-1})
+  await Event.find()
+    .skip(skip)
+    .limit(perPage)
+    .sort({ timestamp: -1 })
     .then((events) => {
-      res.status(200).json({ events, count,perPage });
+      res.status(200).json({ events, count, perPage });
     })
     .catch((err) => {
       res.status(400).json(err);

@@ -1,6 +1,7 @@
 .sidebar {
-  min-height: 120% !important;
+  min-height: 100% !important;
   background-color: rgb(34, 31, 31);
+
 }
 .logo {
   width: 100%px;

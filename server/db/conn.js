@@ -1,13 +1,15 @@
-const mongoose = require ("mongoose");
-const dotenv = require('dotenv')
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
 
-dotenv.config({path:'./config.env'});
+dotenv.config({ path: "./config.env" });
 
-const DB=process.env.DATABASE
+const DB = process.env.DATABASE;
 
-mongoose.connect(DB).then(()=>{
+mongoose
+  .connect(DB)
+  .then(() => {
     console.log("Database connection Successful");
-}).catch((err)=>{
-    console.log("No Connection", err)
-
-});
+  })
+  .catch((err) => {
+    console.log("No Connection", err);
+  });

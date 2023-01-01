@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../../components/sidebar";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./index.css";
 import { Grid } from "@material-ui/core";
 
@@ -33,7 +33,12 @@ const Index = () => {
               </div>
 
               <div className="basicInfo">
+              <div className="stdName">
                 <h1>{std?.name}</h1>
+                <Link to={`/admin/UpdateStudent/${std?._id}`}>
+                <button>Edit Info</button>
+                </Link>
+                </div>
                 <div className="idEmail">
                 <p>College Id:{std?.cid}</p>
                 <p>Email:{std?.email}</p>

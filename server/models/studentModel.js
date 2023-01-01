@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 
 const Schema = mongoose.Schema;
 
-const studentSchema =new Schema({
+const studentSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -11,12 +11,12 @@ const studentSchema =new Schema({
   cid: {
     type: String,
     required: true,
-    unique:true,
+    unique: true,
   },
   email: {
     type: String,
     required: true,
-    unique:true,
+    unique: true,
   },
   profile: {
     type: String,
@@ -79,16 +79,19 @@ const studentSchema =new Schema({
     type: String,
     required: true,
   },
-  feedbacks: [{
-    type: mongoose.Types.ObjectId,
-    ref: "Feedback", 
-    required: true }],
+  feedbacks: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "Feedback",
+      required: true,
+    },
+  ],
 });
 
 studentSchema.methods.generateAuthToken = async function () {
   try {
     let token = jwt.sign({ _id: this._id }, process.env.SECRET_KEY);
-    this.tokens = this.tokens.concat({token:token});
+    this.tokens = this.tokens.concat({ token: token });
     await this.save();
     return token;
   } catch (err) {
@@ -96,17 +99,16 @@ studentSchema.methods.generateAuthToken = async function () {
   }
 };
 
-studentSchema.methods.generateAuthToken = ()=> {
-	const token = jwt.sign({ _id: this._id }, process.env.JWTPRIVATEKEY, {
-		expiresIn: "7d",
-	});
-	return token;
+studentSchema.methods.generateAuthToken = () => {
+  const token = jwt.sign({ _id: this._id }, process.env.JWTPRIVATEKEY, {
+    expiresIn: "7d",
+  });
+  return token;
 };
-
 
 const Student = new mongoose.model("Student", studentSchema);
 module.exports = Student;
 
-Student.count({}, function( err, count){
-  console.log( "Number of students:", count );
-})
+Student.count({}, function (err, count) {
+  console.log("Number of students:", count);
+});
