@@ -14,6 +14,8 @@ import BasicInfo from "./BasicInfo/BasicInfo";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useParams } from "react-router-dom";
+
 
 const steps = ["Basic Information", "College Details"];
 
@@ -32,6 +34,7 @@ function getStepContent(step, state, setState) {
 const theme = createTheme();
 
 export default function UpdateStudent() {
+  const { id } = useParams();
   const [state, setState] = React.useState({
     name: "",
     cid: "",
@@ -59,7 +62,7 @@ export default function UpdateStudent() {
     setActiveStep(activeStep + 1);
     if (activeStep === 1) {
       let url =
-        "https://student-login-portal-mern-mis.herokuapp.com/api/student";
+        `http://localhost:8000/api/student/${id}`;
       const formData = new FormData();
       formData.append("name", state.name);
       formData.append("cid", state.cid);
@@ -80,8 +83,9 @@ export default function UpdateStudent() {
       formData.append("mothername", state.mothername);
       formData.append("fathercontact", state.fathercontact);
       console.log(state.profile.file);
+      console.log(formData)
       try {
-        const response = await axios.post(url, formData);
+        const response = await axios.put(url, formData);
         if (response.status === 201) {
           toast.success("Updated Successfully", {
             position: "top-center",

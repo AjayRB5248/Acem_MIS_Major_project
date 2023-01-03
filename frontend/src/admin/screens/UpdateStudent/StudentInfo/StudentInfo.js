@@ -50,31 +50,34 @@ const genders = [
 ];
 
 export default function StudentInfo({ state, setState }) {
+  const { id } = useParams();
+  const [student, setStudent] = React.useState({});
+  const [loading, setLoading] = React.useState(true);
 
-  const {  id } = useParams();
-  // console.log(id)
-  const [student, setStudent] = React.useState([]);
   React.useEffect(() => {
-    const studentinfo = async () => {
+    const fetchStudent = async () => {
       const response = await axios.get(
         `http://localhost:8000/api/students/${id}`
       );
-      console.log(response?.data);
-      setStudent(response?.data);
+      setStudent(response.data);
+      setLoading(false);
     };
-    studentinfo();
+    fetchStudent();
   }, [id]);
 
-  const handleState = (event) => {
+  const handleChange = (event) => {
     setState({
       ...state,
       [event.target.name]: event.target.value,
     });
-    console.log(state);
   };
 
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
   return (
-    <React.Fragment>
+    <form >
       <Typography variant="h6" gutterBottom>
         College Information
       </Typography>
@@ -84,21 +87,21 @@ export default function StudentInfo({ state, setState }) {
             required
             id="batch"
             name="batch"
-            value={student?.batch}
-            onChange={handleState}
+            value={state.batch}
+            onChange={handleChange}
             label="Batch (E.g 2075)"
             fullWidth
             variant="standard"
           />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField
+        <TextField
             id="faculty"
             select
             label="Faculty"
             name="faculty"
-            value={student?.faculty}
-            onChange={handleState}
+            value={state.faculty}
+            onChange={handleChange}
             helperText="Please select your faculty"
             variant="standard"
           >
@@ -115,8 +118,8 @@ export default function StudentInfo({ state, setState }) {
             select
             label="Section"
             name="section"
-            value={student?.section}
-            onChange={handleState}
+            value={state.section}
+            onChange={handleChange}
             helperText="Please select your section"
             variant="standard"
           >
@@ -133,8 +136,8 @@ export default function StudentInfo({ state, setState }) {
             select
             label="Gender"
             name="gender"
-            value={student?.gender}
-            onChange={handleState}
+            value={state.gender}
+            onChange={handleChange}
             helperText="Please select your gender"
             variant="standard"
           >
@@ -145,15 +148,14 @@ export default function StudentInfo({ state, setState }) {
             ))}
           </TextField>
         </Grid>
-
         <Grid item xs={12} md={6}>
           <TextField
             required
-            value={student?.height}
-            onChange={handleState}
             id="height"
             name="height"
-            label="Height (E.g 5'11)"
+            value={state.height}
+            onChange={handleChange}
+            label="Height (E.g 5'11)*"
             fullWidth
             variant="standard"
           />
@@ -161,11 +163,11 @@ export default function StudentInfo({ state, setState }) {
         <Grid item xs={12} md={6}>
           <TextField
             required
-            value={student?.weight}
-            onChange={handleState}
             id="weight"
             name="weight"
-            label="Weight"
+            value={state.weight}
+            onChange={handleChange}
+            label="Weight*"
             fullWidth
             variant="standard"
           />
@@ -173,11 +175,11 @@ export default function StudentInfo({ state, setState }) {
         <Grid item xs={12} md={6}>
           <TextField
             required
-            value={student?.contact}
-            onChange={handleState}
             id="contact"
             name="contact"
-            label="Contact No."
+            value={state.contact}
+            onChange={handleChange}
+            label="Contact No.*"
             fullWidth
             variant="standard"
           />
@@ -185,16 +187,17 @@ export default function StudentInfo({ state, setState }) {
         <Grid item xs={12} md={6}>
           <TextField
             required
-            value={student?.fathercontact}
-            onChange={handleState}
             id="fatherContact"
             name="fathercontact"
-            label="Father's Contact No."
+            value={state.fathercontact}
+            onChange={handleChange}
+            label="Father's Contact No. *"
             fullWidth
             variant="standard"
           />
         </Grid>
       </Grid>
-    </React.Fragment>
+    </form>
   );
 }
+

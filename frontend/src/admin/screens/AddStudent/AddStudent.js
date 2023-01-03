@@ -59,7 +59,7 @@ export default function AddStudent() {
     setActiveStep(activeStep + 1);
     if (activeStep === 1) {
       let url =
-        "https://student-login-portal-mern-mis.herokuapp.com/api/student";
+        "http://localhost:8000/api/student";
       const formData = new FormData();
       formData.append("name", state.name);
       formData.append("cid", state.cid);

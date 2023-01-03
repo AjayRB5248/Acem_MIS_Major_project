@@ -4,6 +4,7 @@ import "react-calendar/dist/Calendar.css";
 import Wallpaper from "./../../components/wallpaper";
 import { Grid } from "@material-ui/core";
 import Sidebar from "./../../components/sidebar";
+import AttendanceChart from './../../components/AttendanceChart'
 // import "./course.css";
 
 const Index = () => {
@@ -17,7 +18,7 @@ const Index = () => {
           <Wallpaper />
           <Grid container direction="row">
             <Grid item xs={7}>
-              <h1>Coming Soon..</h1>
+             <AttendanceChart/>
             </Grid>
             <Grid item xs={5}>
               <Calendar />
