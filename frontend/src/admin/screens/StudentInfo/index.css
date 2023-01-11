@@ -11,7 +11,11 @@
   flex-wrap: wrap;
   gap: 30px;
 }
-
+.bttns{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
 .studentInfo {
   padding: 40px;
   width: 1000px;
@@ -32,10 +36,14 @@
 }
 .stdName button{
 border: none;
-padding: 15px 15px;
+padding: 7px 7px;
 background-color:  rgb(62, 107, 202);
 cursor: pointer;
 color: white;
+font-size: 12px;
+}
+.stdName button:focus{
+  outline: none;
 }
 
 .profileImage img {

@@ -15,14 +15,10 @@ const Index = () => {
     event();
   }, []);
 
-  // const delEvent = async (eventid) => {
-  //   console.log(eventid);
-  //   await axios.delete(`http://localhost:8000/api/event/${eventid}`);
-  //   window.location.reload();
-  // };
-
-  //   delEvent();
-
+  const delEvent = async (id) => {
+    await axios.delete(`http://localhost:8000/api/event/${id}`);
+    window.location.reload();
+  };
 
   return (
     <div className="Admin_events">
@@ -37,7 +33,7 @@ const Index = () => {
               </div>
 
               <div className="deleteEvent">
-                <RiDeleteBinLine  />
+                <RiDeleteBinLine onClick={() => delEvent(event?._id)} />
               </div>
             </div>
             {/* <p>About Event: <br/>{event.description}</p> */}

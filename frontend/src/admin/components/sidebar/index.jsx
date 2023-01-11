@@ -69,8 +69,8 @@ const Index = () => {
                 key={student.id}
                 className={
                   loc.slice(1) === student.link
-                    ? "list-item active"
-                    : "list-item"
+                    ? "list-items active"
+                    : "list-items"
                 }
               >
                 <Link to={`/admin/${student.link}`}>

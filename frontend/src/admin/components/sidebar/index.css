@@ -1,7 +1,6 @@
 .sidebar {
   min-height: 100% !important;
   background-color: rgb(34, 31, 31);
-
 }
 .logo {
   width: 100%px;
@@ -17,7 +16,7 @@
   list-style: none;
   padding: 0px 25px;
 }
-.nav-list .list-item a {
+.nav-list .list-items a {
   color: rgb(255, 255, 255);
   padding: 10px 5px;
   font-weight: 700;
@@ -31,36 +30,36 @@
   font-weight: 700;
   display: flex;
 }
-.nav-list .list-item .fa {
+.nav-list .list-items .fa {
   margin-right: 10px;
 }
-.nav-list .list-item .list-span {
+.nav-list .list-items .list-span {
   background-color: rgb(255, 0, 0);
   color: white;
   padding: 0px 0.5em;
   font-weight: 900;
   border-radius: 50px;
 }
-.nav-list .list-item.active,
-.nav-list .list-item.active span,
-.nav-list .list-item.active i,
-.nav-list .list-item.active h6 {
+.nav-list .list-items.active,
+.nav-list .list-items.active span,
+.nav-list .list-items.active i,
+.nav-list .list-items.active h6 {
   color: rgba(255, 255, 255, 1);
   background-color: rgb(209, 178, 42);
 }
-.nav-list .list-item:hover,
-.nav-list .list-item:hover i,
-.nav-list .list-item:hover span,
-.nav-list .list-item:hover h6 {
+.nav-list .list-items:hover,
+.nav-list .list-items:hover i,
+.nav-list .list-items:hover span,
+.nav-list .list-items:hover h6 {
   color: rgba(255, 255, 255, 1);
   background-color: rgb(209, 178, 42);
   cursor: pointer;
   text-decoration: none;
 }
-.nav-list .list-item.active:hover,
-.nav-list .list-item.active:hover i,
-.nav-list .list-item.active:hover span,
-.nav-list .list-item.active:hover h6 {
+.nav-list .list-items.active:hover,
+.nav-list .list-items.active:hover i,
+.nav-list .list-items.active:hover span,
+.nav-list .list-items.active:hover h6 {
   color: rgba(255, 255, 255, 1);
   background-color: rgb(209, 178, 42);
 }
@@ -77,7 +76,7 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .list-item h6 {
+  .list-items h6 {
     display: none;
   }
   .logo {
