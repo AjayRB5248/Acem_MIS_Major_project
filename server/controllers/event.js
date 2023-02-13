@@ -90,9 +90,7 @@ const deleteEvent = async (req, res) => {
 
 module.exports = {
   getEvents,
-
   createEvent,
-
   deleteEvent,
   getEventById,
   getprevEvents,

@@ -16,7 +16,7 @@
   padding: 20px 45px;
   flex: 5;
   flex-wrap: wrap;
-  /* gap: 10px; */
+  gap: 10px;
   position: relative;
 }
 .Students {

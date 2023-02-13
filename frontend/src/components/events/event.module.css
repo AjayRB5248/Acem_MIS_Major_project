@@ -13,7 +13,7 @@
 }
 .main_container {
   display: flex;
-  padding: 20px 80px;
+  padding: 40px 40px;
   flex: 5;
   flex-direction: row;
   flex-wrap: wrap;
@@ -21,7 +21,7 @@
   position: relative;
 }
 .event_box {
-    cursor: pointer;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   width: 300px;
@@ -34,8 +34,8 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.event_box h1{
-    font-size: 20px;
+.event_box h1 {
+  font-size: 20px;
 }
 
 .event_box h6 {
@@ -52,11 +52,11 @@
   color: gray;
 }
 
-.event_box img{
-    width: 100%;
+.event_box img {
+  width: 100%;
 }
-.pagination{
+.pagination {
   position: absolute;
-  bottom:0;
+  bottom: 0;
   /* top: 10px; */
 }

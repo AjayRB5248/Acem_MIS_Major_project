@@ -2,6 +2,23 @@ import React, { useEffect, useState } from "react";
 import "./timetable.css";
 import axios from "axios";
 
+
+// function DataTable({ data }) {
+//   return (
+//     <table className="table">
+//       <tbody>
+//         {data.map((row, index) => (
+//           <tr key={index}>
+//             {row.map((cell, i) => (
+//               <td key={i}>{cell}</td>
+//             ))}
+//           </tr>
+//         ))}
+//       </tbody>
+//     </table>
+//   );
+// }
+
 const Index = () => {
   const studentinfo = JSON.parse(localStorage.getItem("model"));
   // console.log(studentinfo.batch);
@@ -75,5 +92,29 @@ const Index = () => {
     </div>
   );
 };
+
+// const [data, setData] = useState([]);
+//   useEffect(() => {
+//     const routine = async () => {
+//       const response = await axios.get(
+//         `http://localhost:8000/api/routinecsv/2075/BCT/A`
+//       );
+//       // const res=JSON.stringify(response.data.batch);
+//       // console.log(response?.data?.timetable[0]?.routine);
+
+//       setData(response?.data[0].data);
+//       console.log(response?.data[0].data);
+//     };
+//     routine();
+//   }, []);
+
+
+// return (
+//   <>
+//   <DataTable data={data}/>
+//   </>
+// )
+// }
+
 
 export default Index;

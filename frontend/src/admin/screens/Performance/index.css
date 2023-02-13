@@ -16,6 +16,21 @@
 
   /* flex: 5; */
 }
+.pieChart{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin-top: 20px;
+  width: 300px;
+  height: 500px;
+  border: 1px solid rgb(30, 158, 233);
+  gap: 20px;
+}
+.pieChart > h3{
+  background: rgb(255, 255, 255);
+  padding: 10px;
+  border-left: 3px solid blue;
+}
 .file-input {
   width: 100%;
   padding: 12px 20px;

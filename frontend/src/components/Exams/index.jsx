@@ -17,7 +17,15 @@ const Index = () => {
           <Wallpaper />
           <Grid container direction="row">
             <Grid item xs={7}>
-              <h1>Coming Soon..</h1>
+              <div className="iframe"><iframe
+                width="650"
+                height="400"
+                src="https://exam.ioe.edu.np/"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe></div>
             </Grid>
             <Grid item xs={5}>
               <Calendar />
