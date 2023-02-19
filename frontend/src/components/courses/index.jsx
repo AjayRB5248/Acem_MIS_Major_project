@@ -19,7 +19,6 @@ const Index = () => {
             <Grid item xs={7}>
               <div className="courseModule">
                 <h5>8th Semester</h5>
-                <hr />
                 <div className="col-7">
                   <ol>
                     <li>Engineering Professional Pracice</li>

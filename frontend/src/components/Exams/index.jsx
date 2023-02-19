@@ -18,7 +18,7 @@ const Index = () => {
           <Grid container direction="row">
             <Grid item xs={7}>
               <div className="iframe"><iframe
-                width="650"
+                width="670"
                 height="400"
                 src="https://exam.ioe.edu.np/"
                 title="YouTube video player"
