@@ -24,8 +24,8 @@
 .feedback_box {
   display: flex;
   flex-direction: column;
-  width: 320px;
-  height: 260px;
+  width: 30%;
+  height: 43%;
   background-color: white;
   margin-left: 5px;
   padding: 20px 25px;

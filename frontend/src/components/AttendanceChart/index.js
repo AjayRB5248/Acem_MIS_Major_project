@@ -1,5 +1,5 @@
 import React from 'react';
-import { Bar } from 'react-chartjs-2';
+import { Chart } from 'react-google-charts';
 
 const attendanceData = {
   'EPP': [
@@ -53,61 +53,44 @@ const attendanceData = {
   ],
 };
 
-const data = {
-  labels: attendanceData.EPP.map(entry => entry.month),
-  datasets: [
-    {
-      label: 'EPP',
-      data: attendanceData.EPP.map(entry => entry.attendance),
-      backgroundColor: 'rgba(255, 0, 0, 1)',
-    },
-    {
-      label: 'I&I',
-      data: attendanceData['I&I'].map(entry => entry.attendance),
-      backgroundColor: 'rgba(0, 255, 0, 1)',
-    },
-    {
-      label: 'IS',
-      data: attendanceData.IS.map(entry => entry.attendance),
-      backgroundColor: 'rgba(0, 0, 255, 1)',
-    },
-    {
-      label: 'Simulation & Modelling',
-      data: attendanceData['Simulation & Modelling'].map(entry => entry.attendance),
-      backgroundColor: 'rgba(255, 255, 0, 1)',
-    },
-    {
-      label: 'BigData',
-      data: attendanceData['BigData'].map(entry => entry.attendance),
-      backgroundColor:'rgba(0, 255, 255, 1)',
-    },
-    {
-      label: 'Multimedia',
-      data: attendanceData.Multimedia.map(entry => entry.attendance),
-      backgroundColor: 'rgba(255, 0, 255, 1)',
-    },
-    {
-      label: 'Project',
-      data: attendanceData.Project.map(entry => entry.attendance),
-      backgroundColor: 'rgba(128, 128, 128, 1)',
-    },
-  ],
-};
+const data = [['Month', 'EPP', 'I&I', 'IS', 'Simulation & Modelling', 'BigData', 'Multimedia', 'Project'],
+...attendanceData.EPP.map((entry, index) => [entry.month, entry.attendance, attendanceData['I&I'][index].attendance,
+attendanceData.IS[index].attendance,
+attendanceData['Simulation & Modelling'][index].attendance,
+attendanceData['BigData'][index].attendance,
+attendanceData.Multimedia[index].attendance,
+attendanceData.Project[index].attendance,
+]),
+];
 
-const options = {
-  scales: {
-    yAxes: [{
-      ticks: {
-        beginAtZero: true
-      }
-    }]
-  }
-}
+// const options = {
+//   legend: { position: 'top', maxLines: 3 },
+//   bar: { groupWidth: '75%' },
+//   isStacked: true
+// };
 
 const AttendanceChart = () => {
   return (
-    <Bar data={data} options={options} />
-  );
+    <Chart
+      width={'100%'}
+      height={'400px'}
+      chartType="ColumnChart"
+      loader={<div>Loading Chart</div>}
+      data={data}
+      options={{
+        title: 'Attendance Report 2079',
+        chartArea: { width: '50%' },
+        hAxis: {
+          title: 'Attendance',
+          minValue: 0,
+        },
+        vAxis: {
+          title: 'Month',
+        },
+      }}
+
+    />
+  )
 }
 
 export default AttendanceChart;

@@ -76,15 +76,15 @@ const Index = () => {
 
   const [jsonData, setJsonData] = useState(null);
 
-    const convertCSVtoJSON = (file) => {
-        Papa.parse(file, {
-            header: true,
-            dynamicTyping: true,
-            complete: (results) => {
-                setJsonData(results.data);
-            }
-        });
-    }
+  const convertCSVtoJSON = (file) => {
+    Papa.parse(file, {
+      header: true,
+      dynamicTyping: true,
+      complete: (results) => {
+        setJsonData(results.data);
+      }
+    });
+  }
 
   // const handleFileSelect = (e) => {
   //   const file = e.target.files[0];

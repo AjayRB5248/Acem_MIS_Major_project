@@ -60,7 +60,7 @@ const Index = () => {
           <h5>{weekday[day]}</h5>
         </div>
         <div className="routine">
-          {weekday[day] === "Saturday" ? (
+          {weekday[day] === "Tuesday" || weekday[day] === "Saturday" ? (
             <div className="col-3">
               <h5>Happy Holiday</h5>
             </div>
@@ -85,7 +85,7 @@ const Index = () => {
               </>
             ))
           )}
-          
+
         </div>
       </div>
       <hr />
