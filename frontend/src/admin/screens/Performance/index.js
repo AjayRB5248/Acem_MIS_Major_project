@@ -9,10 +9,14 @@ import MenuItem from "@mui/material/MenuItem";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Table } from "antd";
+import RingLoader from "react-spinners/RingLoader";
+
 const Index = () => {
   const [file, setFile] = useState();
   const [response, setResponse] = useState([]);
-  const [table,setTable]=useState(false)
+  const [table, setTable] = useState(false);
+  const [loading, setLoading] = useState(false);
+  let [color, setColor] = useState("#90EE90");
 
   const columns = [
     {
@@ -28,6 +32,16 @@ const Index = () => {
     {
       title: "Attendance",
       dataIndex: "attendanceScore",
+      key: "address",
+    },
+    {
+      title: "Assignmnet",
+      dataIndex: "assignmentScore",
+      key: "address",
+    },
+    {
+      title: "Assesment",
+      dataIndex: "assessmentScore",
       key: "address",
     },
     {
@@ -47,15 +61,15 @@ const Index = () => {
     const formData = new FormData();
 
     formData.append("file", file);
-    console.log(file);
     try {
+      setLoading(true);
       const response = await axios.post(
         "http://127.0.0.1:6060/predict",
         formData
       );
       console.log(response.data.prediction);
       setResponse(response?.data?.prediction);
-      setTable(true)
+      setTable(true);
       if (response.status === 200) {
         toast.success("Submitted Successfully", {
           position: "top-center",
@@ -68,6 +82,8 @@ const Index = () => {
           theme: "dark",
         });
       }
+      setLoading(false);
+
     } catch (error) {
       console.log(error);
       toast.error("Something Went Wrong", {
@@ -91,7 +107,7 @@ const Index = () => {
         <Grid item xs={2}>
           <Sidebar />
         </Grid>
-        <div className="main_container">
+        <div className={`main_container ${loading ? 'blur' : ''}`}>
           <form>
             <input
               type="file"
@@ -107,9 +123,23 @@ const Index = () => {
               Submit
             </button>
           </form>
-      <div className={table ? "" : "hidden"}>
-        <Table  dataSource={response} columns={columns} />
-        </div>
+
+          {loading && (
+            <div className="spinner">
+              <RingLoader
+                color={color}
+                loading={loading}
+                // cssOverride={override}
+                size={300}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+              />
+            </div>
+          )}
+
+          <div className={table ? "" : "hidden"}>
+            <Table dataSource={response} columns={columns} />
+          </div>
         </div>
       </Grid>
     </>

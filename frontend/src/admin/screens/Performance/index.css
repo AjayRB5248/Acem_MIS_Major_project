@@ -84,3 +84,19 @@ tbody tr:hover {
 .hidden{
   display: none;
 }
+.spinner{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.blur{
+    /* Apply a blur filter with a 5px radius */
+    backdrop-filter: blur(10px);
+    opacity: 0.5;
+
+    /* Set the background color to semi-transparent white */
+    background-color: rgba(255, 255, 255, 0.5);
+  
+    /* Disable pointer events on the blurred area */
+    pointer-events: none;
+}
