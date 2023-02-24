@@ -18,6 +18,21 @@
 
   /* flex: 5; */
 }
+.main_container h1 {
+  font-size: 2rem;
+  padding: 20px;
+  background-color: #fff;
+  border-left: 10px solid blue;
+}
+.download-btn{
+  padding: 10px;
+  border: none;
+  background-color:rgb(30, 158, 233) ;
+  color: #fff;
+  margin-bottom: 20px;
+  display: grid;
+  place-items: center;
+}
 .pieChart{
   display: flex;
   flex-direction: column;
@@ -31,7 +46,7 @@
 .pieChart > h3{
   background: rgb(255, 255, 255);
   padding: 10px;
-  border-left: 3px solid blue;
+  border-left: 3px solid rgb(30, 158, 233);
 }
 .file-input {
   width: 100%;

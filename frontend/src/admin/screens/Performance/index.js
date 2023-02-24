@@ -17,7 +17,7 @@ const Index = () => {
   const [table, setTable] = useState(false);
   const [loading, setLoading] = useState(false);
   let [color, setColor] = useState("#90EE90");
-
+console.log("response",response)
   const columns = [
     {
       title: "Name",
@@ -27,6 +27,16 @@ const Index = () => {
     {
       title: "College ID",
       dataIndex: "rollno",
+      key: "rollno",
+    },
+    {
+      title: "Faculty",
+      dataIndex: "faculty",
+      key: "rollno",
+    },
+    {
+      title: "Semester",
+      dataIndex: "semester",
       key: "rollno",
     },
     {
@@ -68,6 +78,7 @@ const Index = () => {
         formData
       );
       console.log(response.data.prediction);
+
       setResponse(response?.data?.prediction);
       setTable(true);
       if (response.status === 200) {
@@ -99,6 +110,17 @@ const Index = () => {
     }
   };
 
+    const handleDownload = () => {
+    const csvData = Papa.unparse(response);
+    const blob = new Blob([csvData], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", "data.csv");
+    document.body.appendChild(link);
+    link.click();
+  };
+
   return (
     <>
       <Grid container direction="row" spacing={2}>
@@ -108,6 +130,7 @@ const Index = () => {
           <Sidebar />
         </Grid>
         <div className={`main_container ${loading ? 'blur' : ''}`}>
+        <h1>Upload the CSV file to Evaluate Student Performance</h1>
           <form>
             <input
               type="file"
@@ -138,6 +161,7 @@ const Index = () => {
           )}
 
           <div className={table ? "" : "hidden"}>
+          <button  className="download-btn" onClick={handleDownload}>Download CSV</button>
             <Table dataSource={response} columns={columns} />
           </div>
         </div>
