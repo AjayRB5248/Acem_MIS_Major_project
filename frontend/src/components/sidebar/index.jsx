@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import React from "react";
 import logo from "./../../assets/clg.jpg";
 import "./sidebar.css";
+
 const index = () => {
   const students = [
     {

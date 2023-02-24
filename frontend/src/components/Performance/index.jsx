@@ -57,7 +57,6 @@ const Index = () => {
                 />
 <div className="remarks">
 
-                <h1>Prediction:{prediction}</h1>
                 <h1>Remarks:{remarks}</h1>
               </div>
               </div>
