@@ -1,10 +1,11 @@
 import * as React from "react";
-import { useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import { Input } from "@mui/material";
+import { API_URL } from "../../../../api/apiConstants";
 
 export default function BasicInfo({ state, setState }) {
   const { id } = useParams();
@@ -14,7 +15,7 @@ export default function BasicInfo({ state, setState }) {
     const getStudentInfo = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/students/${id}`
+          `${API_URL}/students/${id}`
         );
         setState(response.data);
       } catch (err) {
@@ -49,7 +50,7 @@ export default function BasicInfo({ state, setState }) {
             required
             id="Name"
             name="name"
-            value={ state.name}
+            value={state.name}
             onChange={handleChange}
             label="Name"
             fullWidth
@@ -73,7 +74,7 @@ export default function BasicInfo({ state, setState }) {
             required
             id="Email"
             name="email"
-            value={ state.email}
+            value={state.email}
             onChange={handleChange}
             label="Email"
             fullWidth
@@ -119,7 +120,7 @@ export default function BasicInfo({ state, setState }) {
             required
             id="FatherName"
             name="fathername"
-            value={ state.fathername}
+            value={state.fathername}
             onChange={handleChange}
             label="Father's Name"
             fullWidth
@@ -131,7 +132,7 @@ export default function BasicInfo({ state, setState }) {
             required
             id="MotherName"
             name="mothername"
-            value={ state.mothername}
+            value={state.mothername}
             onChange={handleChange}
             label="Mother's Name"
             fullWidth
@@ -143,7 +144,7 @@ export default function BasicInfo({ state, setState }) {
             required
             id="Dob"
             name="Dob"
-            value={ state.Dob}
+            value={state.Dob}
             onChange={handleChange}
             label="Date of Birth (DD/MM/YYYY)"
             fullWidth
@@ -155,7 +156,7 @@ export default function BasicInfo({ state, setState }) {
             required
             id="bloodgroup"
             name="BloodGroup"
-            value={ state.bloodgroup}
+            value={state.bloodgroup}
             onChange={handleChange}
             label="BloodGroup"
             fullWidth

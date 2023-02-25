@@ -109,6 +109,6 @@ studentSchema.methods.generateAuthToken = () => {
 const Student = new mongoose.model("Student", studentSchema);
 module.exports = Student;
 
-Student.count({}, function (err, count) {
-  console.log("Number of students:", count);
-});
+// Student.count({}, function (err, count) {
+//   console.log("Number of students:", count);
+// });

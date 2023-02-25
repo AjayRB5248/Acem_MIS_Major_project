@@ -30,6 +30,6 @@ const eventSchema = mongoose.Schema({
 const Event = mongoose.model("Event", eventSchema);
 module.exports = Event;
 
-Event.count({}, function (err, count) {
-  console.log("Number of Events:", count);
-});
+// Event.count({}, function (err, count) {
+//   console.log("Number of Events:", count);
+// });

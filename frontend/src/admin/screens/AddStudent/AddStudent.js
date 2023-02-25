@@ -14,6 +14,7 @@ import BasicInfo from "./BasicInfo/BasicInfo";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { API_URL } from "../../../api/apiConstants";
 
 const steps = ["Basic Information", "College Details"];
 
@@ -59,7 +60,7 @@ export default function AddStudent() {
     setActiveStep(activeStep + 1);
     if (activeStep === 1) {
       let url =
-        "http://localhost:8000/api/student";
+        `${API_URL}/student`;
       const formData = new FormData();
       formData.append("name", state.name);
       formData.append("cid", state.cid);

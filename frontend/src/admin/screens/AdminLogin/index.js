@@ -4,6 +4,7 @@ import "./style.css";
 import logo from './../../../assets/clg.jpg'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { API_URL } from "../../../api/apiConstants";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -12,9 +13,9 @@ const Index = () => {
   const [password, setPassword] = useState("");
 
 
-  useEffect(()=>{
-    const auth= localStorage.getItem('adminToken');
-    if(auth){
+  useEffect(() => {
+    const auth = localStorage.getItem('adminToken');
+    if (auth) {
       navigate('/admin/timeline')
     }
   })
@@ -22,7 +23,7 @@ const Index = () => {
   const loginuser = async (e) => {
     e.preventDefault();
 
-    let res = await fetch("http://localhost:8000/api/admin/login", {
+    let res = await fetch(`${API_URL}/admin/login`, {
       method: "POST",
       headers: {
         "content-Type": "application/json",
@@ -32,18 +33,18 @@ const Index = () => {
         password,
       }),
     });
-     res = await res.json();
-     console.log(res);
-     if(res.email){
-      localStorage.setItem('admin',JSON.stringify(res));
-      localStorage.setItem('adminToken',JSON.stringify(res.token));
+    res = await res.json();
+    console.log(res);
+    if (res.email) {
+      localStorage.setItem('admin', JSON.stringify(res));
+      localStorage.setItem('adminToken', JSON.stringify(res.token));
       navigate('/admin/timeline')
-     }else{
-      toast.error("Invalid Credentials!!",{
-        position:"top-center"
+    } else {
+      toast.error("Invalid Credentials!!", {
+        position: "top-center"
       });
-     }
-   };
+    }
+  };
   return (
     <div className="limiter">
       <div className="container-login">
@@ -92,9 +93,9 @@ const Index = () => {
               <button className="btn btn-light" type="submit" >
                 Login
               </button>
-              
+
             </div>
-           
+
           </form>
         </div>
       </div>

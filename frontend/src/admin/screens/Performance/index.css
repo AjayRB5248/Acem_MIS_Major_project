@@ -18,11 +18,11 @@
   gap: 40px;
   /* flex: 5; */
 }
-.main_container h1 {
+.performance_main_container h1 {
   font-size: 2rem;
   padding: 20px;
   background-color: #fff;
-  border-left: 10px solid blue;
+  border-left: 10px solid rgb(30, 158, 233);
 }
 .download-btn {
   padding: 10px;
@@ -62,7 +62,7 @@
 
 .submit-button {
   width: 100%;
-  background-color: #4caf50; /* Green */
+  background-color: rgb(30, 158, 233); /* Green */
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -70,10 +70,14 @@
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
+  border: none;
 }
 
 .submit-button:hover {
-  background-color: #45a049;
+  background-color: rgb(9, 165, 255);
+}
+.submit-button:focus {
+  outline: none;
 }
 
 table {

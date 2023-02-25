@@ -73,7 +73,14 @@ const Index = () => {
                     : "list-item"
                 }
               >
-                <Link to={`/admin/${student.link}`}>
+                <Link
+                  to={`/admin/${student.link}`}
+                  className={
+                    loc.slice(1) === student.link
+                      ? "nav-link active"
+                      : "nav-link"
+                  }
+                >
                   <span>
                     <i className={`fa fa-${student.icon}`}></i>
                   </span>

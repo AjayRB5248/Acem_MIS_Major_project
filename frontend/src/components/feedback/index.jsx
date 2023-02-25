@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import Sidebar from "./../../components/sidebar";
 import "./feedback.css";
+import { API_URL } from "./../../api/apiConstants";
 // import { useNavigate } from "react-router-dom";
 
 const Index = () => {
@@ -37,7 +38,7 @@ const Index = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setState([]);
-    let url = "http://localhost:8000/api/feedback";
+    let url = `${API_URL}/feedback`;
 
     try {
       const response = await axios.post(url, {

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./timetable.css";
 import axios from "axios";
+import { API_URL } from "../../api/apiConstants";
 
 
 // function DataTable({ data }) {
@@ -41,7 +42,7 @@ const Index = () => {
   useEffect(() => {
     const routine = async () => {
       const response = await axios.get(
-        `http://localhost:8000/api/routine/${batch}/${section}/${weekday[day]}`
+        `${API_URL}/routine/${batch}/${section}/${weekday[day]}`
       );
       // const res=JSON.stringify(response.data.batch);
       console.log(response?.data?.timetable[0]?.routine);

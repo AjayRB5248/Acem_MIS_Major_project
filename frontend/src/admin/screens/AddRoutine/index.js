@@ -8,6 +8,9 @@ import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { API_URL } from "../../../api/apiConstants";
+
+
 
 const faculties = [
   {
@@ -105,7 +108,7 @@ const Index = () => {
     formData.append("data", JSON.stringify(jsonData));
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/routinecsv",
+        `${API_URL}/routinecsv`,
         formData
       );
       if (response.status === 200) {

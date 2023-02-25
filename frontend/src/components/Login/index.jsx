@@ -26,7 +26,7 @@ const Index = () => {
   const loginuser = async (e) => {
     e.preventDefault();
 
-    let res = await fetch("http://localhost:8000/Login", {
+    let res = await fetch(`https://acem-mis.cyclic.app/Login`, {
       method: "POST",
       headers: {
         "content-Type": "application/json",

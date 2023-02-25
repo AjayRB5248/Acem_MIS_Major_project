@@ -6,6 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PreviousEvents from "../../components/PreviousEvents";
 import { Grid } from "@material-ui/core";
+import { API_URL } from "../../../api/apiConstants";
 
 const Index = () => {
   const [state, setState] = useState({
@@ -17,7 +18,7 @@ const Index = () => {
   });
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let url = "http://localhost:8000/api/event";
+    let url = `${API_URL}/event`;
     const formData = new FormData();
     formData.append("eventName", state.eventName);
     formData.append("date", state.date);
