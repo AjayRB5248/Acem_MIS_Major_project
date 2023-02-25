@@ -5,6 +5,7 @@ import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import { useParams } from "react-router-dom";
 import axios from 'axios';
+import { API_URL } from "../../../../api/apiConstants";
 
 const faculties = [
   {
@@ -57,7 +58,7 @@ export default function StudentInfo({ state, setState }) {
   React.useEffect(() => {
     const fetchStudent = async () => {
       const response = await axios.get(
-        `http://localhost:8000/api/students/${id}`
+        `${API_URL}/students/${id}`
       );
       setStudent(response.data);
       setLoading(false);
@@ -95,7 +96,7 @@ export default function StudentInfo({ state, setState }) {
           />
         </Grid>
         <Grid item xs={12} md={6}>
-        <TextField
+          <TextField
             id="faculty"
             select
             label="Faculty"

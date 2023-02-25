@@ -6,6 +6,7 @@ import "./index.css";
 import { Link } from "react-router-dom";
 import Pagination from "@mui/material/Pagination";
 import { Grid } from "@material-ui/core";
+import { API_URL } from "../../../api/apiConstants";
 
 const Index = () => {
   const [page, setPage] = useState(1);
@@ -16,7 +17,7 @@ const Index = () => {
   useEffect(() => {
     const student = async () => {
       const response = await axios.get(
-        `http://localhost:8000/api/students/${batch}/${faculty}/${section}/${page}`
+        `${API_URL}/students/${batch}/${faculty}/${section}/${page}`
       );
       // console.log(response.data);
       const totalPage = Math.ceil(response.data.count / response.data.perPage);
@@ -29,9 +30,9 @@ const Index = () => {
   }, [batch, section, faculty, page]);
   return (
     <Grid container direction="row" spacing={1}>
-    <Grid item xs={2}>
-      <Sidebar />
-    </Grid>
+      <Grid item xs={2}>
+        <Sidebar />
+      </Grid>
       <div className="main_container">
         <div className="TotalStudent">
           <h1>Total Students:{data.count}</h1>
@@ -79,7 +80,7 @@ const Index = () => {
           {/* </Stack> */}
         </div>
       </div>
-      </Grid>
+    </Grid>
   );
 };
 

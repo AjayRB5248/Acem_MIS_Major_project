@@ -5,6 +5,7 @@ import "./index.css";
 import Sidebar from "../../sidebar";
 import moment from "moment";
 import { Grid } from "@material-ui/core";
+import { API_URL } from "../../../api/apiConstants";
 
 const Index = () => {
   const { id } = useParams();
@@ -12,7 +13,7 @@ const Index = () => {
   const [timestamp, setTimestamp] = useState([]);
   useEffect(() => {
     const event = async () => {
-      const response = await axios.get(`http://localhost:8000/api/event/${id}`);
+      const response = await axios.get(`${API_URL}/event/${id}`);
 
       console.log(response?.data?.event);
       setEvent(response?.data?.event);
@@ -21,13 +22,13 @@ const Index = () => {
     event();
   }, []);
 
-  const date=timestamp;
+  const date = timestamp;
 
   return (
     <Grid container direction="row" spacing={1}>
-    <Grid item xs={2}>
-      <Sidebar />
-    </Grid>
+      <Grid item xs={2}>
+        <Sidebar />
+      </Grid>
       <div className="mainContainer">
         <div className="singleEvent_box">
           <div className="eventImage">
@@ -42,7 +43,7 @@ const Index = () => {
           </div>
         </div>
       </div>
-      </Grid>
+    </Grid>
   );
 };
 

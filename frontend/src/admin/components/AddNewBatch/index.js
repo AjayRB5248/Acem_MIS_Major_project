@@ -3,13 +3,14 @@ import { useState } from "react";
 import "./index.css";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import { API_URL } from '../../../api/apiConstants'
 
 const Index = () => {
   const [batch, setBatch] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let url = "http://localhost:8000/api/batch";
+    let url = `${API_URL}/batch`;
     const formData = new FormData();
     formData.append("batch", batch);
     try {

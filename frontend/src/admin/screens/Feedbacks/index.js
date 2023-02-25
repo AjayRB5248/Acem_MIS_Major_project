@@ -7,6 +7,7 @@ import { Grid } from "@material-ui/core";
 import moment from "moment";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { Modal } from "antd";
+import { API_URL } from "../../../api/apiConstants";
 
 const Index = () => {
   const [page, setPage] = useState(1);
@@ -18,7 +19,7 @@ const Index = () => {
   useEffect(() => {
     const fetchFeedbacks = async () => {
       const response = await axios.get(
-        `http://localhost:8000/api/feedbacks/${page}`
+        `${API_URL}/feedbacks/${page}`
       );
       const totalPage = Math.ceil(response.data.count / response.data.perPage);
       setTotalPage(totalPage);
@@ -29,7 +30,7 @@ const Index = () => {
 
   const handleDeleteFeedback = async () => {
     try {
-      await axios.delete(`http://localhost:8000/api/feedback/${feedbackToDelete._id}`);
+      await axios.delete(`${API_URL}/feedback/${feedbackToDelete._id}`);
       setIsModalVisible(false);
       window.location.reload();
     } catch (error) {

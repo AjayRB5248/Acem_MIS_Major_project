@@ -4,6 +4,7 @@ import { Grid } from "@material-ui/core";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import RingLoader from "react-spinners/RingLoader";
+import { API_URL } from "../../../api/apiConstants";
 
 import "./index.css";
 
@@ -17,7 +18,7 @@ const Index = () => {
   useEffect(() => {
     const searchedStudent = async () => {
       const response = await axios.get(
-        `http://localhost:8000/api/searchStudent/${name}`
+        `${API_URL}/searchStudent/${name}`
       );
       setSearchStudent(response?.data);
       setIsLoading(false);

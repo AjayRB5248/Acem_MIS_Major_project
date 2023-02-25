@@ -4,6 +4,7 @@ import "./login.css";
 import logo from "./.././../assets/clg.jpg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { API_URL } from "../../api/apiConstants";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ const Index = () => {
   const loginuser = async (e) => {
     e.preventDefault();
 
-    let res = await fetch("http://localhost:8000/Login", {
+    let res = await fetch(`${API_URL}/Login`, {
       method: "POST",
       headers: {
         "content-Type": "application/json",

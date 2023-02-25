@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import "./index.css";
 import { Grid } from "@material-ui/core";
+import { API_URL } from "../../../api/apiConstants";
 
 const Index = () => {
   const { batch, faculty, section, id } = useParams();
@@ -13,7 +14,7 @@ const Index = () => {
   useEffect(() => {
     const studentinfo = async () => {
       const response = await axios.get(
-        `http://localhost:8000/api/student/${batch}/${faculty}/${section}/${id}`
+        `${API_URL}/student/${batch}/${faculty}/${section}/${id}`
       );
       console.log(response?.data);
       setStudents(response?.data);
@@ -24,7 +25,7 @@ const Index = () => {
   const delStudent = async (id) => {
     console.log(id);
 
-    await axios.delete(`http://localhost:8000/api/student/${id}`);
+    await axios.delete(`${API_URL}/student/${id}`);
     navigate('/admin/timeline')
   };
   return (

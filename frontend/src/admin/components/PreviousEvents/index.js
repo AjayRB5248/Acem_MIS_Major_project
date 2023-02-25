@@ -3,6 +3,8 @@ import "./prevEvent.css";
 import axios from "axios";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { Modal } from "antd";
+import { API_URL } from "../../../api/apiConstants";
+
 
 const Index = () => {
   const [events, setEvents] = useState([]);
@@ -11,7 +13,7 @@ const Index = () => {
 
   useEffect(() => {
     const event = async () => {
-      const response = await axios.get("http://localhost:8000/api/prevEvents");
+      const response = await axios.get(`${API_URL}/prevEvents`);
       console.log(response.data);
       setEvents(response.data.events);
     };
@@ -24,7 +26,7 @@ const Index = () => {
   };
 
   const handleDeleteEvent = async () => {
-    await axios.delete(`http://localhost:8000/api/event/${deleteEventId}`);
+    await axios.delete(`${API_URL}/event/${deleteEventId}`);
     setIsModalVisible(false);
     setDeleteEventId(null);
     window.location.reload();
