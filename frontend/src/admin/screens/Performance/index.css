@@ -10,30 +10,30 @@
 .sidebar {
   flex: 1;
 }
-.main_container {
+.performance_main_container {
   padding: 40px;
-  margin: 20px ;
+  margin: 20px;
   display: flex;
   flex-direction: column;
 
   /* flex: 5; */
 }
-.main_container h1 {
+.performance_main_container h1 {
   font-size: 2rem;
   padding: 20px;
   background-color: #fff;
-  border-left: 10px solid blue;
+  border-left: 10px solid rgb(30, 158, 233);
 }
-.download-btn{
+.download-btn {
   padding: 10px;
   border: none;
-  background-color:rgb(30, 158, 233) ;
+  background-color: rgb(30, 158, 233);
   color: #fff;
   margin-bottom: 20px;
   display: grid;
   place-items: center;
 }
-.pieChart{
+.pieChart {
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -43,7 +43,7 @@
   border: 1px solid rgb(30, 158, 233);
   gap: 20px;
 }
-.pieChart > h3{
+.pieChart > h3 {
   background: rgb(255, 255, 255);
   padding: 10px;
   border-left: 3px solid rgb(30, 158, 233);
@@ -62,7 +62,7 @@
 
 .submit-button {
   width: 100%;
-  background-color: #4caf50; /* Green */
+  background-color: rgb(30, 158, 233); /* Green */
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -70,10 +70,14 @@
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
+  border: none;
 }
 
 .submit-button:hover {
-  background-color: #45a049;
+  background-color: rgb(9, 165, 255);
+}
+.submit-button:focus {
+  outline: none;
 }
 
 table {
@@ -96,22 +100,22 @@ th {
 tbody tr:hover {
   background-color: #f5f5f5;
 }
-.hidden{
+.hidden {
   display: none;
 }
-.spinner{
+.spinner {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.blur{
-    /* Apply a blur filter with a 5px radius */
-    backdrop-filter: blur(10px);
-    opacity: 0.5;
+.blur {
+  /* Apply a blur filter with a 5px radius */
+  backdrop-filter: blur(10px);
+  opacity: 0.5;
 
-    /* Set the background color to semi-transparent white */
-    background-color: rgba(255, 255, 255, 0.5);
-  
-    /* Disable pointer events on the blurred area */
-    pointer-events: none;
+  /* Set the background color to semi-transparent white */
+  background-color: rgba(255, 255, 255, 0.5);
+
+  /* Disable pointer events on the blurred area */
+  pointer-events: none;
 }

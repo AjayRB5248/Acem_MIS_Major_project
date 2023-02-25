@@ -11,7 +11,7 @@
   flex-wrap: wrap;
   gap: 30px;
 }
-.bttns{
+.bttns {
   display: flex;
   flex-direction: row;
   gap: 10px;
@@ -25,24 +25,27 @@
   gap: 60px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-.stdName{
+.stdName {
   display: flex;
   flex-direction: row;
   gap: 20px;
   justify-content: space-between;
 }
-.stdName h1{
+.stdName h1 {
   font-size: 30px;
 }
-.stdName button{
-border: none;
-padding: 7px 7px;
-background-color:  rgb(62, 107, 202);
-cursor: pointer;
-color: white;
-font-size: 12px;
+.stdName button {
+  border: none;
+  padding: 7px 7px;
+  background-color: rgb(62, 107, 202);
+  cursor: pointer;
+  color: white;
+  font-size: 12px;
 }
-.stdName button:focus{
+.del button {
+  background-color: rgb(221, 29, 29);
+}
+.stdName button:focus {
   outline: none;
 }
 
@@ -51,23 +54,23 @@ font-size: 12px;
   object-fit: cover;
   border: 10px solid black;
 }
-.basicInfo{
+.basicInfo {
   /* display: flex; */
   flex-direction: column;
 }
 .idEmail {
- /* display: flex; */
-  gap: 20px;
-}
-.idEmail p{
-  font-size: 15px;
-  color: gray;
-}
-.stdFaculty{
   /* display: flex; */
   gap: 20px;
 }
-.stdFaculty p{
+.idEmail p {
+  font-size: 15px;
+  color: gray;
+}
+.stdFaculty {
+  /* display: flex; */
+  gap: 20px;
+}
+.stdFaculty p {
   font-size: 15px;
   color: gray;
 }

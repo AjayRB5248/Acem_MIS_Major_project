@@ -30,6 +30,14 @@
   font-weight: 700;
   display: flex;
 }
+.nav-list .list-item .nav-link.active {
+  color: rgba(255, 255, 255, 1) !important;
+  background-color: rgb(209, 178, 42) !important;
+}
+.nav-list .list-item .nav-link.active:hover {
+  color: rgba(255, 255, 255, 1) !important;
+  background-color: rgb(209, 178, 42) !important;
+}
 .nav-list .list-item .fa {
   margin-right: 10px;
 }

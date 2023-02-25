@@ -3,19 +3,28 @@ import Sidebar from "../../components/sidebar";
 import { Grid } from "@material-ui/core";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
+import RingLoader from "react-spinners/RingLoader";
+
 import "./index.css";
 
 const Index = () => {
+  let [color, setColor] = useState("#90EE90");
   const { name } = useParams();
 
   const [searchedStudent, setSearchStudent] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     const searchedStudent = async () => {
       const response = await axios.get(
         `http://localhost:8000/api/searchStudent/${name}`
       );
       setSearchStudent(response?.data);
+      setIsLoading(false);
     };
+
+
+
     searchedStudent();
   }, []);
 
@@ -26,7 +35,18 @@ const Index = () => {
           <Sidebar />
         </Grid>
         <div className="main_container">
-          {searchedStudent.length > 0 ? (
+          {isLoading ? (
+            <div className="Loading">
+              <RingLoader
+                color={color}
+                loading={isLoading}
+                // cssOverride={override}
+                size={50}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+              />
+            </div>
+          ) : searchedStudent.length > 0 ? (
             <div className="Students">
               {searchedStudent.map((student) => (
                 <>

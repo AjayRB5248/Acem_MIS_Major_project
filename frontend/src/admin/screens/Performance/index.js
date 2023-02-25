@@ -16,8 +16,8 @@ const Index = () => {
   const [response, setResponse] = useState([]);
   const [table, setTable] = useState(false);
   const [loading, setLoading] = useState(false);
-  let [color, setColor] = useState("#90EE90");
-console.log("response",response)
+  let [color, setColor] = useState("rgb(30, 158, 233)");
+  console.log("response", response)
   const columns = [
     {
       title: "Name",
@@ -108,9 +108,11 @@ console.log("response",response)
         theme: "dark",
       });
     }
+    setLoading(false);
+
   };
 
-    const handleDownload = () => {
+  const handleDownload = () => {
     const csvData = Papa.unparse(response);
     const blob = new Blob([csvData], { type: "text/csv" });
     const url = URL.createObjectURL(blob);
@@ -129,8 +131,8 @@ console.log("response",response)
         <Grid item xs={2}>
           <Sidebar />
         </Grid>
-        <div className={`main_container ${loading ? 'blur' : ''}`}>
-        <h1>Upload the CSV file to Evaluate Student Performance</h1>
+        <div className={`performance_main_container ${loading ? 'blur' : ''}`}>
+          <h1>Upload the CSV file to Evaluate Student Performance</h1>
           <form>
             <input
               type="file"
@@ -161,7 +163,7 @@ console.log("response",response)
           )}
 
           <div className={table ? "" : "hidden"}>
-          <button  className="download-btn" onClick={handleDownload}>Download CSV</button>
+            <button className="download-btn" onClick={handleDownload}>Download CSV</button>
             <Table dataSource={response} columns={columns} />
           </div>
         </div>

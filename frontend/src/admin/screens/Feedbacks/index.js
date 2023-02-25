@@ -6,17 +6,17 @@ import Pagination from "@mui/material/Pagination";
 import { Grid } from "@material-ui/core";
 import moment from "moment";
 import { RiDeleteBinLine } from "react-icons/ri";
+import { Modal } from "antd";
 
 const Index = () => {
-  // const auth = localStorage.getItem("model");
-  // const id = JSON.parse( localStorage.getItem("model"))._id
-
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(2);
-
   const [feedbacks, setFeedbacks] = useState([]);
+  const [feedbackToDelete, setFeedbackToDelete] = useState(null);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   useEffect(() => {
-    const feedback = async () => {
+    const fetchFeedbacks = async () => {
       const response = await axios.get(
         `http://localhost:8000/api/feedbacks/${page}`
       );
@@ -24,21 +24,18 @@ const Index = () => {
       setTotalPage(totalPage);
       setFeedbacks(response?.data?.feedbacks);
     };
-    feedback();
+    fetchFeedbacks();
   }, [page]);
 
-  const delFeedback = async (id) => {
-    console.log(id);
-
-    await axios.delete(`http://localhost:8000/api/feedback/${id}`);
-    window.location.reload();
+  const handleDeleteFeedback = async () => {
+    try {
+      await axios.delete(`http://localhost:8000/api/feedback/${feedbackToDelete._id}`);
+      setIsModalVisible(false);
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
   };
-
-  useEffect(() => {
-   
-      delFeedback();
-    
-  }, []);
 
   return (
     <Grid container direction="row" spacing={1}>
@@ -46,7 +43,6 @@ const Index = () => {
         <Sidebar />
       </Grid>
       <div className={styles.main_container}>
-        {/* <h1>Feedbacks</h1> */}
         {feedbacks.map((feedback) => {
           return (
             <div className={styles.feedback_box} key={feedback.timestamp}>
@@ -65,29 +61,30 @@ const Index = () => {
                   </h4>
                   <div className={styles.clz_info}>
                     <p className={styles.batch}>
-                      Batch:{feedback.student.batch}
+                      Batch: {feedback.student.batch}
                     </p>
                     <p className={styles.section}>
-                      section:{feedback.student.section}
+                      Section: {feedback.student.section}
                     </p>
                     <h5 className={styles.delete}>
                       <RiDeleteBinLine
                         className="deleteIcon"
-                        onClick={()=>delFeedback(feedback._id)}
+                        onClick={() => {
+                          setFeedbackToDelete(feedback);
+                          setIsModalVisible(true);
+                        }}
                       />
                     </h5>
                   </div>
                 </div>
               </div>
               <h1>{feedback.TeacherName}</h1>
-              <h5>Faculty:{feedback.faculty}</h5>
+              <h5>Faculty: {feedback.faculty}</h5>
               <p>{feedback.feedbackMessage}</p>
             </div>
           );
         })}
         <div className={styles.pagination}>
-          {/* <Stack spacing={2}> */}
-          {/* <Pagination count={10} shape="rounded" /> */}
           <Pagination
             count={totalPage}
             variant="outlined"
@@ -96,9 +93,16 @@ const Index = () => {
             size="large"
             onChange={(e, value) => setPage(value)}
           />
-          {/* </Stack> */}
         </div>
       </div>
+      <Modal
+        title="Delete Feedback"
+        visible={isModalVisible}
+        onOk={handleDeleteFeedback}
+        onCancel={() => setIsModalVisible(false)}
+      >
+        <p>Are you sure you want to delete this feedback?</p>
+      </Modal>
     </Grid>
   );
 };

@@ -7,7 +7,7 @@ import Events from './components/events'
 import "./index.css";
 import App from "./App";
 import {
-  BrowserRouter ,
+  BrowserRouter,
   Route,
   Routes,
   // Navigate,
@@ -39,41 +39,41 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <Routes>
-    <Route element={<StudentPrivate />}>
-      <Route path="/Timeline" element={<App/>} />
-      <Route path="/Logout" element={<Login/>} />
-      <Route path="/Profile" element={<Profile/>} />
-      <Route path="/Courses" element={<Courses/>} />
-      <Route path="/Performance" element={<StudentPerformance/>} />
-      <Route path="/Attendance" element={<Attendance/>} />
-      <Route path="/Exams" element={<Exams/>} />
-      <Route path="/Events" element={<Events/>} />
-      <Route path="/Event/:id" element={<SingleEvent/>} />
-      <Route path="/Feedback" element={<Feedback/>} />
+      <Route element={<StudentPrivate />}>
+        <Route path="/Timeline" element={<App />} />
+        <Route path="/Logout" element={<Login />} />
+        <Route path="/Profile" element={<Profile />} />
+        <Route path="/Courses" element={<Courses />} />
+        <Route path="/Performance" element={<StudentPerformance />} />
+        <Route path="/Attendance" element={<Attendance />} />
+        <Route path="/Exams" element={<Exams />} />
+        <Route path="/Events" element={<Events />} />
+        <Route path="/Event/:id" element={<SingleEvent />} />
+        <Route path="/Feedback" element={<Feedback />} />
       </Route>
-      <Route  path="/" element={<Login/>} />
+      <Route path="/" element={<Login />} />
 
       <Route element={<AdminPrivate />}>
-      <Route path="/admin/timeline" element={<Dashboard/>} />
-      <Route path="/admin/Add_Students" element={<AddStudent/>} />
-      <Route path="/admin/UpdateStudent/:id" element={<UpdateStudent/>} />
-      <Route path="/admin/Add_Events" element={<AddEvents/>} />
-      <Route path="/admin/Add_Routine" element={<AddRoutine/>} />
-      <Route path="/admin/Performance" element={<Performance/>} />
-      <Route path="/admin/Student_Batch" element={<StudentBatch/>} />
-      <Route path="/admin/SearchedStudent/:name" element={<SearchedStudent/>} />
-      <Route path="/admin/Student_Batch/:batch" element={<StudentFaculty/>} />
-      <Route path="/admin/Student_Batch/:batch/:faculty" element={<StudentSection/>} />
-      <Route path="/admin/Student_Batch/:batch/:faculty/:section" element={<Students/>} />
-      <Route path="/admin/Student_Batch/:batch/:faculty/:section/:id" element={<StudentInfo/>} />
-      <Route path="/admin/Feedbacks" element={<Feedbacks/>} />
-      
-      </Route>
-      <Route path="/admin/login" element={<AdminLogin/>} />
+        <Route path="/admin/timeline" element={<Dashboard />} />
+        <Route path="/admin/Add_Students" element={<AddStudent />} />
+        <Route path="/admin/UpdateStudent/:id" element={<UpdateStudent />} />
+        <Route path="/admin/Add_Events" element={<AddEvents />} />
+        <Route path="/admin/Add_Routine" element={<AddRoutine />} />
+        <Route path="/admin/Performance" element={<Performance />} />
+        <Route path="/admin/Student_Batch" element={<StudentBatch />} />
+        <Route path="/admin/SearchedStudent/:name" element={<SearchedStudent />} />
+        <Route path="/admin/Student_Batch/:batch" element={<StudentFaculty />} />
+        <Route path="/admin/Student_Batch/:batch/:faculty" element={<StudentSection />} />
+        <Route path="/admin/Student_Batch/:batch/:faculty/:section" element={<Students />} />
+        <Route path="/admin/Student_Batch/:batch/:faculty/:section/:id" element={<StudentInfo />} />
+        <Route path="/admin/Feedbacks" element={<Feedbacks />} />
 
-     
-      
+      </Route>
+      <Route path="/admin/login" element={<AdminLogin />} />
+
+
+
     </Routes>
   </BrowserRouter>
- 
+
 );

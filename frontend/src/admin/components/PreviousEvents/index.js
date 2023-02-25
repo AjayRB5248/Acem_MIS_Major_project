@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./prevEvent.css";
 import axios from "axios";
 import { RiDeleteBinLine } from "react-icons/ri";
+import { Modal } from "antd";
 
 const Index = () => {
   const [events, setEvents] = useState([]);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [deleteEventId, setDeleteEventId] = useState(null);
 
   useEffect(() => {
     const event = async () => {
@@ -15,9 +18,21 @@ const Index = () => {
     event();
   }, []);
 
-  const delEvent = async (id) => {
-    await axios.delete(`http://localhost:8000/api/event/${id}`);
+  const showDeleteConfirmationModal = (eventId) => {
+    setIsModalVisible(true);
+    setDeleteEventId(eventId);
+  };
+
+  const handleDeleteEvent = async () => {
+    await axios.delete(`http://localhost:8000/api/event/${deleteEventId}`);
+    setIsModalVisible(false);
+    setDeleteEventId(null);
     window.location.reload();
+  };
+
+  const handleCancelDelete = () => {
+    setIsModalVisible(false);
+    setDeleteEventId(null);
   };
 
   return (
@@ -33,7 +48,7 @@ const Index = () => {
               </div>
 
               <div className="deleteEvent">
-                <RiDeleteBinLine onClick={() => delEvent(event?._id)} />
+                <RiDeleteBinLine onClick={() => showDeleteConfirmationModal(event?._id)} />
               </div>
             </div>
             {/* <p>About Event: <br/>{event.description}</p> */}
@@ -41,8 +56,21 @@ const Index = () => {
           </div>
         ))}
       </div>
+      <Modal
+        title="Confirm Deletion"
+        visible={isModalVisible}
+        onOk={handleDeleteEvent}
+        onCancel={handleCancelDelete}
+        okText="Delete"
+        cancelText="Cancel"
+      >
+        <p>Are you sure you want to delete this event?</p>
+      </Modal>
     </div>
   );
 };
 
 export default Index;
+
+
+

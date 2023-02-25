@@ -48,7 +48,7 @@ const Index = () => {
                       <button>Edit Info</button>
                     </Link>
                     <div className="del">
-                      <button onClick={()=>delStudent(std?._id)}>Delete</button>
+                      <button onClick={() => delStudent(std?._id)}>Delete</button>
                     </div>
                   </div>
                 </div>
