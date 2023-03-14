@@ -8,20 +8,29 @@ import { API_URL } from "../../../api/apiConstants";
 
 const Index = () => {
   const navigate = useNavigate();
-  // const navigate=useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [isLoginDisabled, setIsLoginDisabled] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const auth = localStorage.getItem('adminToken');
     if (auth) {
       navigate('/admin/timeline')
     }
-  })
+  }, [navigate])
+
+  useEffect(() => {
+    if (email !== "" && password !== "") {
+      setIsLoginDisabled(false);
+    } else {
+      setIsLoginDisabled(true);
+    }
+  }, [email, password]);
 
   const loginuser = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     let res = await fetch(`${API_URL}/admin/login`, {
       method: "POST",
@@ -35,6 +44,7 @@ const Index = () => {
     });
     res = await res.json();
     console.log(res);
+    setIsLoading(false);
     if (res.email) {
       localStorage.setItem('admin', JSON.stringify(res));
       localStorage.setItem('adminToken', JSON.stringify(res.token));
@@ -45,6 +55,7 @@ const Index = () => {
       });
     }
   };
+
   return (
     <div className="limiter">
       <div className="container-login">
@@ -88,14 +99,11 @@ const Index = () => {
                 required
               />
             </div>
-            {/* <h6 className="error text-light mx-3">{this.state.error}</h6> */}
             <div className="login-form-btn text-center">
-              <button className="btn btn-light" type="submit" >
-                Login
+              <button className="btn btn-light" type="submit" disabled={isLoginDisabled || isLoading}>
+                {isLoading ? "Loading..." : "Login"}
               </button>
-
             </div>
-
           </form>
         </div>
       </div>

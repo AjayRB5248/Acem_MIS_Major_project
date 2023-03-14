@@ -7,9 +7,9 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Index = () => {
   const navigate = useNavigate();
-  // const navigate=useNavigate();
   const [email, setEmail] = useState("");
   const [cid, setCid] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const auth = localStorage.getItem("model");
@@ -18,13 +18,9 @@ const Index = () => {
     }
   });
 
-  // const handleGuest =()=>{
-  //   setEmail("ajay.075bct005@acem.edu.np");
-  //   setCid("ACE075BCT005");
-  // }
-
   const loginuser = async (e) => {
     e.preventDefault();
+    setIsLoading(true); // Set isLoading to true before making the API call
 
     let res = await fetch(`https://acem-mis.cyclic.app/Login`, {
       method: "POST",
@@ -46,7 +42,10 @@ const Index = () => {
         position: "top-center",
       });
     }
+
+    setIsLoading(false); // Set isLoading to false after the API call is complete
   };
+
   return (
     <div className="limiter">
       <div className="container-login">
@@ -90,12 +89,14 @@ const Index = () => {
                 required
               />
             </div>
-            {/* <h6 className="error text-light mx-3">{this.state.error}</h6> */}
             <div className="login-form-btn text-center">
-              <button className="btn btn-light" type="submit">
-                Login
+              <button className="btn btn-light" type="submit" disabled={isLoading}>
+                {isLoading ? (
+                  <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                ) : (
+                  'Login'
+                )}
               </button>
-              {/* <button className="guestButton" onClick={handleGuest}>Guest Login</button> */}
             </div>
           </form>
         </div>
